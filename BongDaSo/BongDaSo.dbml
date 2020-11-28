@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BongDaSo" Class="BongDaSoDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-IMNK99U\THANG;Initial Catalog=BongDaSo;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="BongDaSoConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.BangDiem" Member="BangDiems">
+    <Type Name="BangDiem">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_Giai" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_DoiBong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="diem" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="DoiBong_BangDiem" Member="DoiBong" ThisKey="id_DoiBong" OtherKey="id" Type="DoiBong" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="GiaiDau_BangDiem" Member="GiaiDau" ThisKey="id_Giai" OtherKey="id" Type="GiaiDau" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BinhLuan" Member="BinhLuans">
+    <Type Name="BinhLuan">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_TinTuc" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="userID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ngayDang" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="gioDang" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="noiDung" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="TinTuc_BinhLuan" Member="TinTuc" ThisKey="id_TinTuc" OtherKey="id" Type="TinTuc" IsForeignKey="true" />
+      <Association Name="User_BinhLuan" Member="User" ThisKey="userID" OtherKey="id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DoiBong" Member="DoiBongs">
+    <Type Name="DoiBong">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="tenDoi" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="kiHieu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="DoiBong_BangDiem" Member="BangDiems" ThisKey="id" OtherKey="id_DoiBong" Type="BangDiem" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GiaiDau" Member="GiaiDaus">
+    <Type Name="GiaiDau">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="tenGiai" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="GiaiDau_BangDiem" Member="BangDiems" ThisKey="id" OtherKey="id_Giai" Type="BangDiem" />
+      <Association Name="GiaiDau_LichThiDau" Member="LichThiDaus" ThisKey="id" OtherKey="id_Giai" Type="LichThiDau" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LichThiDau" Member="LichThiDaus">
+    <Type Name="LichThiDau">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_Giai" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ngay" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="gio" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="maDoiNha" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="maDoiKhach" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="diemDoiNha" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="diemDoiKhach" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ketQua" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="GiaiDau_LichThiDau" Member="GiaiDau" ThisKey="id_Giai" OtherKey="id" Type="GiaiDau" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LoaiTin" Member="LoaiTins">
+    <Type Name="LoaiTin">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="tenLoai" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="LoaiTin_TinTuc" Member="TinTucs" ThisKey="id" OtherKey="idLoai" Type="TinTuc" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LoaiUser" Member="LoaiUsers">
+    <Type Name="LoaiUser">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="tenLoai" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Association Name="LoaiUser_User" Member="Users" ThisKey="id" OtherKey="id_loai" Type="User" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TinTuc" Member="TinTucs">
+    <Type Name="TinTuc">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="title" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="tomTat" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="thumb" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="cover" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="noiDung" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="id_User" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ngayDang" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="gioDang" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="luotXem" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="doUuTien" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idLoai" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="TinTuc_BinhLuan" Member="BinhLuans" ThisKey="id" OtherKey="id_TinTuc" Type="BinhLuan" />
+      <Association Name="LoaiTin_TinTuc" Member="LoaiTin" ThisKey="idLoai" OtherKey="id" Type="LoaiTin" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="User_TinTuc" Member="User" ThisKey="id_User" OtherKey="id" Type="User" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="User">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="userName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="pass" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="id_loai" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="User_BinhLuan" Member="BinhLuans" ThisKey="id" OtherKey="userID" Type="BinhLuan" />
+      <Association Name="User_TinTuc" Member="TinTucs" ThisKey="id" OtherKey="id_User" Type="TinTuc" />
+      <Association Name="LoaiUser_User" Member="LoaiUser" ThisKey="id_loai" OtherKey="id" Type="LoaiUser" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+</Database>
