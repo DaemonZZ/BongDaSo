@@ -14,5 +14,9 @@ namespace BongDaSo
             return dbc.TinTucs.FirstOrDefault();
 
         }
+        public TinTuc getFisrt_4_typeNews()
+        {
+            return dbc.TinTucs.Where(t => t.idLoai == 4).FirstOrDefault();
+        }
     }
 }

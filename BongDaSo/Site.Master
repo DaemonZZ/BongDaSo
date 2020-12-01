@@ -27,7 +27,7 @@
 
 </head>
 <body>
-    <!--<form runat="server"> -->
+    <form runat="server"> 
     <div id="preloader">
         <div id="status">&nbsp;</div>
     </div>
@@ -131,6 +131,6 @@
     <script src="assets/js/jquery.newsTicker.min.js"></script>
     <script src="assets/js/jquery.fancybox.pack.js"></script>
     <script src="assets/js/custom.js"></script>
-    <!--</form> -->
+    </form> 
 </body>
 </html>

@@ -15,13 +15,12 @@ namespace BongDaSo
         {
             if (!IsPostBack)
             {
-                rpSlider.DataSource = dbc.TinTucs;
-                rpSlider.DataBind();
+                        
+                Image2.ImageUrl = tinMoi.getFisrt_4_typeNews().cover;
+                HyperLink2.NavigateUrl = "/";
+                HyperLink2.Text = tinMoi.getFisrt_4_typeNews().title;
+                Label3.Text = tinMoi.getFisrt_4_typeNews().tomTat;
 
-                rpLasterPost.DataSource = dbc.TinTucs;
-                rpLasterPost.DataBind();
-
-               
             }
         }
 
