@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -15,12 +16,27 @@ namespace BongDaSo
         {
             if (!IsPostBack)
             {
-                        
+                rpSlider.DataSource = tinMoi.getTop5LasterPost();
+                rpSlider.DataBind();
+
+                rpLasterPost.DataSource = tinMoi.getTop5LasterPost();
+                rpLasterPost.DataBind();
+
+                rpMostPop.DataSource = tinMoi.getTop5PopularPost();
+                rpMostPop.DataBind();
+
+                Repeater4.DataSource = tinMoi.getTop6LasterPost();
+                Repeater4.DataBind();
+
                 Image2.ImageUrl = tinMoi.getFisrt_4_typeNews().cover;
                 HyperLink2.NavigateUrl = "/";
                 HyperLink2.Text = tinMoi.getFisrt_4_typeNews().title;
                 Label3.Text = tinMoi.getFisrt_4_typeNews().tomTat;
 
+                Image3.ImageUrl = tinMoi.getFisrt_5_typeNews().cover;
+                HyperLink3.NavigateUrl = "/";
+                HyperLink3.Text = tinMoi.getFisrt_5_typeNews().title;
+                Label4.Text = tinMoi.getFisrt_5_typeNews().tomTat;
             }
         }
 

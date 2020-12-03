@@ -51,12 +51,12 @@ namespace BongDaSo
     partial void InsertLoaiUser(LoaiUser instance);
     partial void UpdateLoaiUser(LoaiUser instance);
     partial void DeleteLoaiUser(LoaiUser instance);
-    partial void InsertTinTuc(TinTuc instance);
-    partial void UpdateTinTuc(TinTuc instance);
-    partial void DeleteTinTuc(TinTuc instance);
     partial void InsertUser(User instance);
     partial void UpdateUser(User instance);
     partial void DeleteUser(User instance);
+    partial void InsertTinTuc(TinTuc instance);
+    partial void UpdateTinTuc(TinTuc instance);
+    partial void DeleteTinTuc(TinTuc instance);
     #endregion
 		
 		public BongDaSoDataContext() : 
@@ -145,19 +145,19 @@ namespace BongDaSo
 			}
 		}
 		
-		public System.Data.Linq.Table<TinTuc> TinTucs
-		{
-			get
-			{
-				return this.GetTable<TinTuc>();
-			}
-		}
-		
 		public System.Data.Linq.Table<User> Users
 		{
 			get
 			{
 				return this.GetTable<User>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TinTuc> TinTucs
+		{
+			get
+			{
+				return this.GetTable<TinTuc>();
 			}
 		}
 	}
@@ -396,9 +396,9 @@ namespace BongDaSo
 		
 		private string _noiDung;
 		
-		private EntityRef<TinTuc> _TinTuc;
-		
 		private EntityRef<User> _User;
+		
+		private EntityRef<TinTuc> _TinTuc;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -420,8 +420,8 @@ namespace BongDaSo
 		
 		public BinhLuan()
 		{
-			this._TinTuc = default(EntityRef<TinTuc>);
 			this._User = default(EntityRef<User>);
+			this._TinTuc = default(EntityRef<TinTuc>);
 			OnCreated();
 		}
 		
@@ -553,40 +553,6 @@ namespace BongDaSo
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TinTuc_BinhLuan", Storage="_TinTuc", ThisKey="id_TinTuc", OtherKey="id", IsForeignKey=true)]
-		public TinTuc TinTuc
-		{
-			get
-			{
-				return this._TinTuc.Entity;
-			}
-			set
-			{
-				TinTuc previousValue = this._TinTuc.Entity;
-				if (((previousValue != value) 
-							|| (this._TinTuc.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TinTuc.Entity = null;
-						previousValue.BinhLuans.Remove(this);
-					}
-					this._TinTuc.Entity = value;
-					if ((value != null))
-					{
-						value.BinhLuans.Add(this);
-						this._id_TinTuc = value.id;
-					}
-					else
-					{
-						this._id_TinTuc = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TinTuc");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_BinhLuan", Storage="_User", ThisKey="userID", OtherKey="id", IsForeignKey=true)]
 		public User User
 		{
@@ -617,6 +583,40 @@ namespace BongDaSo
 						this._userID = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("User");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TinTuc1_BinhLuan", Storage="_TinTuc", ThisKey="id_TinTuc", OtherKey="id", IsForeignKey=true)]
+		public TinTuc TinTuc
+		{
+			get
+			{
+				return this._TinTuc.Entity;
+			}
+			set
+			{
+				TinTuc previousValue = this._TinTuc.Entity;
+				if (((previousValue != value) 
+							|| (this._TinTuc.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TinTuc.Entity = null;
+						previousValue.BinhLuans.Remove(this);
+					}
+					this._TinTuc.Entity = value;
+					if ((value != null))
+					{
+						value.BinhLuans.Add(this);
+						this._id_TinTuc = value.id;
+					}
+					else
+					{
+						this._id_TinTuc = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("TinTuc");
 				}
 			}
 		}
@@ -794,6 +794,8 @@ namespace BongDaSo
 		
 		private EntitySet<LichThiDau> _LichThiDaus;
 		
+		private EntitySet<TinTuc> _TinTucs;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -808,6 +810,7 @@ namespace BongDaSo
 		{
 			this._BangDiems = new EntitySet<BangDiem>(new Action<BangDiem>(this.attach_BangDiems), new Action<BangDiem>(this.detach_BangDiems));
 			this._LichThiDaus = new EntitySet<LichThiDau>(new Action<LichThiDau>(this.attach_LichThiDaus), new Action<LichThiDau>(this.detach_LichThiDaus));
+			this._TinTucs = new EntitySet<TinTuc>(new Action<TinTuc>(this.attach_TinTucs), new Action<TinTuc>(this.detach_TinTucs));
 			OnCreated();
 		}
 		
@@ -877,6 +880,19 @@ namespace BongDaSo
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="GiaiDau_TinTuc1", Storage="_TinTucs", ThisKey="id", OtherKey="idGiaiDau")]
+		public EntitySet<TinTuc> TinTucs
+		{
+			get
+			{
+				return this._TinTucs;
+			}
+			set
+			{
+				this._TinTucs.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -916,6 +932,18 @@ namespace BongDaSo
 		}
 		
 		private void detach_LichThiDaus(LichThiDau entity)
+		{
+			this.SendPropertyChanging();
+			entity.GiaiDau = null;
+		}
+		
+		private void attach_TinTucs(TinTuc entity)
+		{
+			this.SendPropertyChanging();
+			entity.GiaiDau = this;
+		}
+		
+		private void detach_TinTucs(TinTuc entity)
 		{
 			this.SendPropertyChanging();
 			entity.GiaiDau = null;
@@ -1285,7 +1313,7 @@ namespace BongDaSo
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LoaiTin_TinTuc", Storage="_TinTucs", ThisKey="id", OtherKey="idLoai")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LoaiTin_TinTuc1", Storage="_TinTucs", ThisKey="id", OtherKey="idLoai")]
 		public EntitySet<TinTuc> TinTucs
 		{
 			get
@@ -1445,6 +1473,237 @@ namespace BongDaSo
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Users")]
+	public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private string _userName;
+		
+		private string _pass;
+		
+		private System.Nullable<int> _id_loai;
+		
+		private EntitySet<BinhLuan> _BinhLuans;
+		
+		private EntitySet<TinTuc> _TinTucs;
+		
+		private EntityRef<LoaiUser> _LoaiUser;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OnuserNameChanging(string value);
+    partial void OnuserNameChanged();
+    partial void OnpassChanging(string value);
+    partial void OnpassChanged();
+    partial void Onid_loaiChanging(System.Nullable<int> value);
+    partial void Onid_loaiChanged();
+    #endregion
+		
+		public User()
+		{
+			this._BinhLuans = new EntitySet<BinhLuan>(new Action<BinhLuan>(this.attach_BinhLuans), new Action<BinhLuan>(this.detach_BinhLuans));
+			this._TinTucs = new EntitySet<TinTuc>(new Action<TinTuc>(this.attach_TinTucs), new Action<TinTuc>(this.detach_TinTucs));
+			this._LoaiUser = default(EntityRef<LoaiUser>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userName", DbType="VarChar(50)")]
+		public string userName
+		{
+			get
+			{
+				return this._userName;
+			}
+			set
+			{
+				if ((this._userName != value))
+				{
+					this.OnuserNameChanging(value);
+					this.SendPropertyChanging();
+					this._userName = value;
+					this.SendPropertyChanged("userName");
+					this.OnuserNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pass", DbType="NVarChar(50)")]
+		public string pass
+		{
+			get
+			{
+				return this._pass;
+			}
+			set
+			{
+				if ((this._pass != value))
+				{
+					this.OnpassChanging(value);
+					this.SendPropertyChanging();
+					this._pass = value;
+					this.SendPropertyChanged("pass");
+					this.OnpassChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_loai", DbType="Int")]
+		public System.Nullable<int> id_loai
+		{
+			get
+			{
+				return this._id_loai;
+			}
+			set
+			{
+				if ((this._id_loai != value))
+				{
+					if (this._LoaiUser.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_loaiChanging(value);
+					this.SendPropertyChanging();
+					this._id_loai = value;
+					this.SendPropertyChanged("id_loai");
+					this.Onid_loaiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_BinhLuan", Storage="_BinhLuans", ThisKey="id", OtherKey="userID")]
+		public EntitySet<BinhLuan> BinhLuans
+		{
+			get
+			{
+				return this._BinhLuans;
+			}
+			set
+			{
+				this._BinhLuans.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_TinTuc1", Storage="_TinTucs", ThisKey="id", OtherKey="id_User")]
+		public EntitySet<TinTuc> TinTucs
+		{
+			get
+			{
+				return this._TinTucs;
+			}
+			set
+			{
+				this._TinTucs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LoaiUser_User", Storage="_LoaiUser", ThisKey="id_loai", OtherKey="id", IsForeignKey=true, DeleteRule="CASCADE")]
+		public LoaiUser LoaiUser
+		{
+			get
+			{
+				return this._LoaiUser.Entity;
+			}
+			set
+			{
+				LoaiUser previousValue = this._LoaiUser.Entity;
+				if (((previousValue != value) 
+							|| (this._LoaiUser.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._LoaiUser.Entity = null;
+						previousValue.Users.Remove(this);
+					}
+					this._LoaiUser.Entity = value;
+					if ((value != null))
+					{
+						value.Users.Add(this);
+						this._id_loai = value.id;
+					}
+					else
+					{
+						this._id_loai = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("LoaiUser");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_BinhLuans(BinhLuan entity)
+		{
+			this.SendPropertyChanging();
+			entity.User = this;
+		}
+		
+		private void detach_BinhLuans(BinhLuan entity)
+		{
+			this.SendPropertyChanging();
+			entity.User = null;
+		}
+		
+		private void attach_TinTucs(TinTuc entity)
+		{
+			this.SendPropertyChanging();
+			entity.User = this;
+		}
+		
+		private void detach_TinTucs(TinTuc entity)
+		{
+			this.SendPropertyChanging();
+			entity.User = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TinTuc")]
 	public partial class TinTuc : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1475,7 +1734,11 @@ namespace BongDaSo
 		
 		private System.Nullable<int> _idLoai;
 		
+		private System.Nullable<int> _idGiaiDau;
+		
 		private EntitySet<BinhLuan> _BinhLuans;
+		
+		private EntityRef<GiaiDau> _GiaiDau;
 		
 		private EntityRef<LoaiTin> _LoaiTin;
 		
@@ -1509,11 +1772,14 @@ namespace BongDaSo
     partial void OndoUuTienChanged();
     partial void OnidLoaiChanging(System.Nullable<int> value);
     partial void OnidLoaiChanged();
+    partial void OnidGiaiDauChanging(System.Nullable<int> value);
+    partial void OnidGiaiDauChanged();
     #endregion
 		
 		public TinTuc()
 		{
 			this._BinhLuans = new EntitySet<BinhLuan>(new Action<BinhLuan>(this.attach_BinhLuans), new Action<BinhLuan>(this.detach_BinhLuans));
+			this._GiaiDau = default(EntityRef<GiaiDau>);
 			this._LoaiTin = default(EntityRef<LoaiTin>);
 			this._User = default(EntityRef<User>);
 			OnCreated();
@@ -1767,7 +2033,31 @@ namespace BongDaSo
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TinTuc_BinhLuan", Storage="_BinhLuans", ThisKey="id", OtherKey="id_TinTuc")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idGiaiDau", DbType="Int")]
+		public System.Nullable<int> idGiaiDau
+		{
+			get
+			{
+				return this._idGiaiDau;
+			}
+			set
+			{
+				if ((this._idGiaiDau != value))
+				{
+					if (this._GiaiDau.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidGiaiDauChanging(value);
+					this.SendPropertyChanging();
+					this._idGiaiDau = value;
+					this.SendPropertyChanged("idGiaiDau");
+					this.OnidGiaiDauChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TinTuc1_BinhLuan", Storage="_BinhLuans", ThisKey="id", OtherKey="id_TinTuc")]
 		public EntitySet<BinhLuan> BinhLuans
 		{
 			get
@@ -1780,7 +2070,41 @@ namespace BongDaSo
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LoaiTin_TinTuc", Storage="_LoaiTin", ThisKey="idLoai", OtherKey="id", IsForeignKey=true, DeleteRule="CASCADE")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="GiaiDau_TinTuc1", Storage="_GiaiDau", ThisKey="idGiaiDau", OtherKey="id", IsForeignKey=true, DeleteRule="CASCADE")]
+		public GiaiDau GiaiDau
+		{
+			get
+			{
+				return this._GiaiDau.Entity;
+			}
+			set
+			{
+				GiaiDau previousValue = this._GiaiDau.Entity;
+				if (((previousValue != value) 
+							|| (this._GiaiDau.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._GiaiDau.Entity = null;
+						previousValue.TinTucs.Remove(this);
+					}
+					this._GiaiDau.Entity = value;
+					if ((value != null))
+					{
+						value.TinTucs.Add(this);
+						this._idGiaiDau = value.id;
+					}
+					else
+					{
+						this._idGiaiDau = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("GiaiDau");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LoaiTin_TinTuc1", Storage="_LoaiTin", ThisKey="idLoai", OtherKey="id", IsForeignKey=true, DeleteRule="CASCADE")]
 		public LoaiTin LoaiTin
 		{
 			get
@@ -1814,7 +2138,7 @@ namespace BongDaSo
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_TinTuc", Storage="_User", ThisKey="id_User", OtherKey="id", IsForeignKey=true, DeleteRule="CASCADE")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_TinTuc1", Storage="_User", ThisKey="id_User", OtherKey="id", IsForeignKey=true, DeleteRule="CASCADE")]
 		public User User
 		{
 			get
@@ -1878,237 +2202,6 @@ namespace BongDaSo
 		{
 			this.SendPropertyChanging();
 			entity.TinTuc = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Users")]
-	public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private string _userName;
-		
-		private string _pass;
-		
-		private System.Nullable<int> _id_loai;
-		
-		private EntitySet<BinhLuan> _BinhLuans;
-		
-		private EntitySet<TinTuc> _TinTucs;
-		
-		private EntityRef<LoaiUser> _LoaiUser;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OnuserNameChanging(string value);
-    partial void OnuserNameChanged();
-    partial void OnpassChanging(string value);
-    partial void OnpassChanged();
-    partial void Onid_loaiChanging(System.Nullable<int> value);
-    partial void Onid_loaiChanged();
-    #endregion
-		
-		public User()
-		{
-			this._BinhLuans = new EntitySet<BinhLuan>(new Action<BinhLuan>(this.attach_BinhLuans), new Action<BinhLuan>(this.detach_BinhLuans));
-			this._TinTucs = new EntitySet<TinTuc>(new Action<TinTuc>(this.attach_TinTucs), new Action<TinTuc>(this.detach_TinTucs));
-			this._LoaiUser = default(EntityRef<LoaiUser>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userName", DbType="VarChar(50)")]
-		public string userName
-		{
-			get
-			{
-				return this._userName;
-			}
-			set
-			{
-				if ((this._userName != value))
-				{
-					this.OnuserNameChanging(value);
-					this.SendPropertyChanging();
-					this._userName = value;
-					this.SendPropertyChanged("userName");
-					this.OnuserNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pass", DbType="NVarChar(50)")]
-		public string pass
-		{
-			get
-			{
-				return this._pass;
-			}
-			set
-			{
-				if ((this._pass != value))
-				{
-					this.OnpassChanging(value);
-					this.SendPropertyChanging();
-					this._pass = value;
-					this.SendPropertyChanged("pass");
-					this.OnpassChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_loai", DbType="Int")]
-		public System.Nullable<int> id_loai
-		{
-			get
-			{
-				return this._id_loai;
-			}
-			set
-			{
-				if ((this._id_loai != value))
-				{
-					if (this._LoaiUser.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onid_loaiChanging(value);
-					this.SendPropertyChanging();
-					this._id_loai = value;
-					this.SendPropertyChanged("id_loai");
-					this.Onid_loaiChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_BinhLuan", Storage="_BinhLuans", ThisKey="id", OtherKey="userID")]
-		public EntitySet<BinhLuan> BinhLuans
-		{
-			get
-			{
-				return this._BinhLuans;
-			}
-			set
-			{
-				this._BinhLuans.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_TinTuc", Storage="_TinTucs", ThisKey="id", OtherKey="id_User")]
-		public EntitySet<TinTuc> TinTucs
-		{
-			get
-			{
-				return this._TinTucs;
-			}
-			set
-			{
-				this._TinTucs.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LoaiUser_User", Storage="_LoaiUser", ThisKey="id_loai", OtherKey="id", IsForeignKey=true, DeleteRule="CASCADE")]
-		public LoaiUser LoaiUser
-		{
-			get
-			{
-				return this._LoaiUser.Entity;
-			}
-			set
-			{
-				LoaiUser previousValue = this._LoaiUser.Entity;
-				if (((previousValue != value) 
-							|| (this._LoaiUser.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._LoaiUser.Entity = null;
-						previousValue.Users.Remove(this);
-					}
-					this._LoaiUser.Entity = value;
-					if ((value != null))
-					{
-						value.Users.Add(this);
-						this._id_loai = value.id;
-					}
-					else
-					{
-						this._id_loai = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("LoaiUser");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_BinhLuans(BinhLuan entity)
-		{
-			this.SendPropertyChanging();
-			entity.User = this;
-		}
-		
-		private void detach_BinhLuans(BinhLuan entity)
-		{
-			this.SendPropertyChanging();
-			entity.User = null;
-		}
-		
-		private void attach_TinTucs(TinTuc entity)
-		{
-			this.SendPropertyChanging();
-			entity.User = this;
-		}
-		
-		private void detach_TinTucs(TinTuc entity)
-		{
-			this.SendPropertyChanging();
-			entity.User = null;
 		}
 	}
 }

@@ -29,7 +29,7 @@
 <body>
     <form runat="server"> 
     <div id="preloader">
-        <div id="status">&nbsp;</div>
+        <div id="status"></div>
     </div>
     <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
     <div class="container">
@@ -69,7 +69,7 @@
                         <li class="active"><a href="Default.aspx"><span class="fa fa-home desktop-home"></span><span class="mobile-show">Home</span></a></li>
                         <asp:Repeater ID="rpNav" runat="server">
                             <ItemTemplate>
-                                <li><a href="#"><%#Eval("tenGiai") %></a></li>
+                                <li><a href="<%#Eval("id","Category.aspx?GiaiDau={0}&page=1") %>"><%#Eval("tenGiai") %></a></li>
                             </ItemTemplate>
                         </asp:Repeater>
                         
@@ -83,6 +83,8 @@
                 /////
             </asp:ContentPlaceHolder>
         </div>
+
+
         <footer id="footer">
             <div class="footer_top">
                 <div class="row">

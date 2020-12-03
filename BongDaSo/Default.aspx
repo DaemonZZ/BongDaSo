@@ -4,67 +4,67 @@
 
 
 
-        <asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="BongDaSo.BongDaSoDataContext" EntityTypeName="" OrderBy="ngayDang desc, gioDang desc, doUuTien desc" TableName="TinTucs" Select="new (cover, tomTat, title)">
-        </asp:LinqDataSource>
+    <asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="BongDaSo.BongDaSoDataContext" EntityTypeName="" OrderBy="ngayDang desc, gioDang desc, doUuTien desc" TableName="TinTucs">
+    </asp:LinqDataSource>
 
-        <section id="sliderSection">
-            <div class="row">
-                <div class="col-lg-8 col-md-8 col-sm-8">
-                    <div class="slick_slider">
-                        <asp:Repeater ID="rpSlider" runat="server" DataSourceID="LinqDataSource1">
-                            <ItemTemplate>
-                                <div class="single_iteam">
-                                    <a href="pages/single_page.html">
-                                        <img src="<%# Eval("cover") %>" alt=""></a>
-                                    <div class="slider_article">
-                                        <h2><a class="slider_tittle" href="pages/single_page.html"><%#Eval("title") %></a></h2>
-                                        <p><%#Eval("tomTat") %></p>
-                                    </div>
+    <section id="sliderSection">
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8">
+                <div class="slick_slider">
+                    <asp:Repeater ID="rpSlider" runat="server">
+                        <ItemTemplate>
+                            <div class="single_iteam">
+                                <a href="<%#Eval("id","Desc.aspx?ID={0}") %>">
+                                    <img src="<%# Eval("cover") %>" alt=""></a>
+                                <div class="slider_article">
+                                    <h2><a class="slider_tittle" href="<%#Eval("id","Desc.aspx?ID={0}") %>"><%#Eval("title") %></a></h2>
+                                    <p><%#Eval("tomTat") %></p>
                                 </div>
-                            </ItemTemplate>
-                        </asp:Repeater>
-                        
-                        
-                    </div>
+                            </div>
+                        </ItemTemplate>
+                    </asp:Repeater>
+
+
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-4">
-                    <div class="latest_post">
-                        <h2><span>Tin Mới Nhất</span></h2>
-                        <div class="latest_post_container">
-                            <div id="prev-button"><i class="fa fa-chevron-up"></i></div>
-                            <ul class="latest_postnav">
-                                <asp:Repeater ID="rpLasterPost" runat="server" DataSourceID="LinqDataSource1">
-                                    <ItemTemplate>
-                                        <li>
-                                            <div class="media">
-                                                <a href="#" class="media-left">
-                                                    <img alt="" src="<%#Eval("cover") %>">
-                                                </a>
-                                                &nbsp;<div class="media-body"><a href="#" class="catg_title"><%#Eval("title") %></a> </div>
-                                            </div>
-                                        </li>
-                                    </ItemTemplate>
-                                </asp:Repeater>
-                                
-                            </ul>
-                            <div id="next-button"><i class="fa  fa-chevron-down"></i></div>
-                        </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <div class="latest_post">
+                    <h2><span>Tin Mới Nhất</span></h2>
+                    <div class="latest_post_container">
+                        <div id="prev-button"><i class="fa fa-chevron-up"></i></div>
+                        <ul class="latest_postnav">
+                            <asp:Repeater ID="rpLasterPost" runat="server">
+                                <ItemTemplate>
+                                    <li>
+                                        <div class="media">
+                                            <a href="<%#Eval("id","Desc.aspx?ID={0}") %>" class="media-left">
+                                                <img alt="" src="<%#Eval("cover") %>">
+                                            </a >
+                                            <div class="media-body"><a href="<%#Eval("id","Desc.aspx?ID={0}") %>" class="catg_title"><%#Eval("title") %></a> </div>
+                                        </div>
+                                    </li>
+                                </ItemTemplate>
+                            </asp:Repeater>
+
+                        </ul>
+                        <div id="next-button"><i class="fa  fa-chevron-down"></i></div>
                     </div>
                 </div>
             </div>
-        </section>
-        <section id="contentSection">
-            <div class="row">
-                <div class="col-lg-8 col-md-8 col-sm-8">
-                    <div class="left_content">
-                        <div class="single_post_content">
-                            <h2><span>Hậu Trường</span></h2>
-                            
-                            <div class="single_post_content_left">
-                                <ul class="business_catgnav  wow fadeInDown">
-                                   
-                                    <li>
-                                        <asp:FormView ID="FormView1" runat="server" DataKeyNames="id" DataSourceID="LinqDataSource2" OnDataBound="FormView1_DataBound1">
+        </div>
+    </section>
+    <section id="contentSection">
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8">
+                <div class="left_content">
+                    <div class="single_post_content">
+                        <h2><span>Hậu Trường</span></h2>
+
+                        <div class="single_post_content_left">
+                            <ul class="business_catgnav  wow fadeInDown">
+
+                                <li>
+                                    <asp:FormView ID="FormView1" runat="server" DataKeyNames="id" DataSourceID="LinqDataSource2" OnDataBound="FormView1_DataBound1">
                                         <EditItemTemplate>
                                             id:
                                             <asp:Label ID="idLabel1" runat="server" Text='<%# Eval("id") %>' />
@@ -166,52 +166,53 @@
                                         <ItemTemplate>
                                             <asp:Image ID="imgCover" runat="server" ImageUrl='<%# Eval("cover", "{0}") %>' Width="300px" />
                                             <br />
-                                            <asp:HyperLink ID="linkLastPost" runat="server" NavigateUrl='<%# Eval("id", "/") %>' Text='<%# Eval("title", "{0}") %>' Font-Bold="True"></asp:HyperLink>
+                                            <asp:HyperLink ID="linkLastPost" runat="server" NavigateUrl='<%#Eval("id","Desc.aspx?ID={0}") %>' Text='<%# Eval("title", "{0}") %>' Font-Bold="True"></asp:HyperLink>
                                             <br />
                                         </ItemTemplate>
 
                                     </asp:FormView>
-                                    </li>
-                                </ul>
-                            </div>
-                            
-                            <div class="single_post_content_right">
-                                <ul class="spost_nav">
-                                    <asp:LinqDataSource ID="LinqDataSource2" runat="server" ContextTypeName="BongDaSo.BongDaSoDataContext" EntityTypeName="" OrderBy="ngayDang desc, gioDang desc" TableName="TinTucs" Where="idLoai == @idLoai">
-                                        <WhereParameters>
-                                            <asp:Parameter DefaultValue="2" Name="idLoai" Type="Int32" />
-                                        </WhereParameters>
-                                    </asp:LinqDataSource>
-                                    <asp:Repeater ID="rpHauTruong" runat="server" DataSourceID="LinqDataSource2">
-                                        <ItemTemplate>
-                                            <li>
-                                                <div class="media wow fadeInDown">
-                                                    <a href="pages/single_page.html" class="media-left">
-                                                        <img alt="" src="<%#Eval("cover") %>">
-                                                    </a>
-                                                    &nbsp;&nbsp;<div class="media-body"><a href="#" class="catg_title"><%#Eval("title") %></a> </div>
-                                                </div>
-                                            </li>
-
-                                        </ItemTemplate>
-                                    </asp:Repeater>
-                                </ul>
-                            </div>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="fashion_technology_area">
-                            <div class="fashion">
-                                <div class="single_post_content">
-                                    <h2><span>Thị Trường Chuyển Nhượng</span></h2>
-                                        <asp:LinqDataSource ID="chuyenNhuong" runat="server" ContextTypeName="BongDaSo.BongDaSoDataContext" EntityTypeName="" TableName="TinTucs" Where="idLoai == @idLoai">
-                                            <WhereParameters>
-                                                <asp:Parameter DefaultValue="3" Name="idLoai" Type="Int32" />
-                                            </WhereParameters>
-                                        </asp:LinqDataSource>
-                                    <ul class ="business_catgnav wow fadeInDown">
-                                        <li>
 
-                                            <figure class="bsbig_fig">
-                                                <a href="pages/single_page.html" class="featured_img"><span class="overlay"></span><asp:FormView ID="FormView2" runat="server" DataKeyNames="id" DataSourceID="chuyenNhuong">
+                        <div class="single_post_content_right">
+                            <ul class="spost_nav">
+                                <asp:LinqDataSource ID="LinqDataSource2" runat="server" ContextTypeName="BongDaSo.BongDaSoDataContext" EntityTypeName="" OrderBy="ngayDang desc, gioDang desc" TableName="TinTucs" Where="idLoai == @idLoai">
+                                    <WhereParameters>
+                                        <asp:Parameter DefaultValue="2" Name="idLoai" Type="Int32" />
+                                    </WhereParameters>
+                                </asp:LinqDataSource>
+                                <asp:Repeater ID="rpHauTruong" runat="server" DataSourceID="LinqDataSource2">
+                                    <ItemTemplate>
+                                        <li>
+                                            <div class="media wow fadeInDown">
+                                                <a href="<%#Eval("id","Desc.aspx?ID={0}") %>" class="media-left">
+                                                    <img alt="" src="<%#Eval("cover") %>">
+                                                </a>
+                                               <div class="media-body"><a href="<%#Eval("id","Desc.aspx?ID={0}") %>" class="catg_title"><%#Eval("title") %></a> </div>
+                                            </div>
+                                        </li>
+
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="fashion_technology_area">
+                        <div class="fashion">
+                            <div class="single_post_content">
+                                <h2><span>Thị Trường Chuyển Nhượng</span></h2>
+                                <asp:LinqDataSource ID="chuyenNhuong" runat="server" ContextTypeName="BongDaSo.BongDaSoDataContext" EntityTypeName="" TableName="TinTucs" Where="idLoai == @idLoai">
+                                    <WhereParameters>
+                                        <asp:Parameter DefaultValue="3" Name="idLoai" Type="Int32" />
+                                    </WhereParameters>
+                                </asp:LinqDataSource>
+                                <ul class="business_catgnav wow fadeInDown">
+                                    <li>
+
+                                        <figure class="bsbig_fig">
+                                            <a href="<%#Eval("id","Desc.aspx?ID={0}") %>" class="featured_img"><span class="overlay"></span>
+                                                <asp:FormView ID="FormView2" runat="server" DataKeyNames="id" DataSourceID="chuyenNhuong">
                                                     <EditItemTemplate>
                                                         id:
                                                         <asp:DynamicControl ID="idDynamicControl" runat="server" DataField="id" Mode="ReadOnly" />
@@ -313,169 +314,190 @@
                                                     <ItemTemplate>
                                                         <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("cover", "{0}") %>' />
                                                         <br />
-                                                        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Eval("id") %>' Text='<%# Eval("title", "{0}") %>' Font-Bold="True"></asp:HyperLink>
+                                                        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Eval("id","Desc.aspx?ID={0}") %>' Text='<%# Eval("title", "{0}") %>' Font-Bold="True"></asp:HyperLink>
                                                         <br />
                                                         <br />
                                                         <asp:Label ID="Label1" runat="server" Text='<%# Eval("tomTat", "{0}") %>'></asp:Label>
                                                     </ItemTemplate>
                                                 </asp:FormView>
-                                                </a>
-                                            </figure>
-                                        </li>
-                                    </ul>
-                                    <ul class="spost_nav">
-                                        <asp:Repeater ID="Repeater1" runat="server" DataSourceID="chuyenNhuong">
-                                            <ItemTemplate>
-                                        <li>
-                                            <div class="media wow fadeInDown">
-                                                <a href="/" class="media-left">
-                                                    <img alt="" src="<%#Eval("cover") %>">
-                                                </a>
-                                                &nbsp;&nbsp;<div class="media-body"><a href="pages/single_page.html" class="catg_title"><%#Eval("title") %></a> </div>
-                                            </div>
-                                        </li>
-
-                                            </ItemTemplate>
-                                        </asp:Repeater>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="technology">
-                                <div class="single_post_content">
-                                    <h2><span>Phân tich - Dự đoán</span></h2>
-                                       <ul class ="business_catgnav">
-                                        <li>
-                                            <figure class="bsbig_fig wow fadeInDown">
-                                                <a href="pages/single_page.html" class="featured_img"><span class="overlay"></span><asp:Image ID="Image2" runat="server" OnDataBinding="Page_Load" />
-                                                </a>
-                                                <figcaption>
-                                                    <asp:HyperLink ID="HyperLink2" runat="server">HyperLink</asp:HyperLink>
-                                                </figcaption>
-                                                <p>
-                                                    <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
-                                                </p>
-                                            </figure>
-                                        </li>
-                                    </ul>
-                                    <ul class="spost_nav">
-                                        <li>
-                                            <div class="media wow fadeInDown">
-                                                <a href="pages/single_page.html" class="media-left">
-                                                    <img alt="" src="images/post_img1.jpg">
-                                                </a>
-                                                <div class="media-body"><a href="pages/single_page.html" class="catg_title">Aliquam malesuada diam eget turpis varius 1</a> </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="media wow fadeInDown">
-                                                <a href="pages/single_page.html" class="media-left">
-                                                    <img alt="" src="images/post_img2.jpg">
-                                                </a>
-                                                <div class="media-body"><a href="pages/single_page.html" class="catg_title">Aliquam malesuada diam eget turpis varius 2</a> </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="media wow fadeInDown">
-                                                <a href="pages/single_page.html" class="media-left">
-                                                    <img alt="" src="images/post_img1.jpg">
-                                                </a>
-                                                <div class="media-body"><a href="pages/single_page.html" class="catg_title">Aliquam malesuada diam eget turpis varius 3</a> </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="media wow fadeInDown">
-                                                <a href="pages/single_page.html" class="media-left">
-                                                    <img alt="" src="images/post_img2.jpg">
-                                                </a>
-                                                <div class="media-body"><a href="pages/single_page.html" class="catg_title">Aliquam malesuada diam eget turpis varius 4</a> </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single_post_content">
-                            <h2><span>Photography</span></h2>
-                            <ul class="photograph_nav  wow fadeInDown">
-                                <li>
-                                    <div class="photo_grid">
-                                        <figure class="effect-layla">
-                                            <a class="fancybox-buttons" data-fancybox-group="button" href="images/photograph_img2.jpg" title="Photography Ttile 1">
-                                                <img src="images/photograph_img2.jpg" alt="" /></a>
-                                        </figure>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="photo_grid">
-                                        <figure class="effect-layla">
-                                            <a class="fancybox-buttons" data-fancybox-group="button" href="images/photograph_img3.jpg" title="Photography Ttile 2">
-                                                <img src="images/photograph_img3.jpg" alt="" />
                                             </a>
-                                        </figure>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="photo_grid">
-                                        <figure class="effect-layla">
-                                            <a class="fancybox-buttons" data-fancybox-group="button" href="images/photograph_img4.jpg" title="Photography Ttile 3">
-                                                <img src="images/photograph_img4.jpg" alt="" />
-                                            </a>
-                                        </figure>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="photo_grid">
-                                        <figure class="effect-layla">
-                                            <a class="fancybox-buttons" data-fancybox-group="button" href="images/photograph_img4.jpg" title="Photography Ttile 4">
-                                                <img src="images/photograph_img4.jpg" alt="" />
-                                            </a>
-                                        </figure>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="photo_grid">
-                                        <figure class="effect-layla">
-                                            <a class="fancybox-buttons" data-fancybox-group="button" href="images/photograph_img2.jpg" title="Photography Ttile 5">
-                                                <img src="images/photograph_img2.jpg" alt="" />
-                                            </a>
-                                        </figure>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="photo_grid">
-                                        <figure class="effect-layla">
-                                            <a class="fancybox-buttons" data-fancybox-group="button" href="images/photograph_img3.jpg" title="Photography Ttile 6">
-                                                <img src="images/photograph_img3.jpg" alt="" />
-                                            </a>
-                                        </figure>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="single_post_content">
-                            <h2><span>Games</span></h2>
-                            <div class="single_post_content_left">
-                                <ul class="business_catgnav">
-                                    <li>
-                                        <figure class="bsbig_fig  wow fadeInDown">
-                                            <a class="featured_img" href="pages/single_page.html">
-                                                <img src="images/featured_img1.jpg" alt="">
-                                                <span class="overlay"></span></a>
-                                            <figcaption><a href="pages/single_page.html">Proin rhoncus consequat nisl eu ornare mauris</a> </figcaption>
-                                            <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a phare...</p>
                                         </figure>
                                     </li>
                                 </ul>
+                                <ul class="spost_nav">
+                                    <asp:Repeater ID="Repeater1" runat="server" DataSourceID="chuyenNhuong">
+                                        <ItemTemplate>
+                                            <li>
+                                                <div class="media wow fadeInDown">
+                                                    <a href="<%#Eval("id","Desc.aspx?ID={0}") %>" class="media-left">
+                                                        <img alt="" src="<%#Eval("cover") %>">
+                                                    </a>
+                                                    <div class="media-body"><a href="<%#Eval("id","Desc.aspx?ID={0}") %>" class="catg_title"><%#Eval("title") %></a> </div>
+                                                </div>
+                                            </li>
+
+                                        </ItemTemplate>
+                                    </asp:Repeater>
+                                </ul>
                             </div>
-                            <div class="single_post_content_right">
+                        </div>
+                        <div class="technology">
+                            <div class="single_post_content">
+                                <h2><span>Phân tich - Dự đoán</span></h2>
+                                    <ul class="business_catgnav">
+                                    <li>
+                                        <figure class="bsbig_fig wow fadeInDown">
+                                            <a href="<%#Eval("id","Desc.aspx?ID={0}") %>" class="featured_img"><span class="overlay"></span>
+                                                <asp:Image ID="Image2" runat="server" OnDataBinding="Page_Load" />
+                                            </a>
+                                            <figcaption>
+                                                <asp:HyperLink ID="HyperLink2" runat="server">HyperLink</asp:HyperLink>
+                                            </figcaption>
+                                            <p>
+                                                <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
+                                            </p>
+                                        </figure>
+                                    </li>
+                                </ul>
+                                <ul class="spost_nav">
+
+                                    <asp:Repeater ID="Repeater2" runat="server" DataSourceID="phantichdudoanDts">
+                                        <ItemTemplate>
+                                            <li>
+                                                <div class="media wow fadeInDown">
+                                                    <a href="<%#Eval("id","Desc.aspx?ID={0}") %>" class="media-left">
+                                                        <img alt="" src="<%#Eval("cover") %>">
+                                                    </a>
+                                                   <div class="media-body"><a href="<%#Eval("id","Desc.aspx?ID={0}") %>" class="catg_title"><%#Eval("title") %></a> </div>
+                                                </div>
+                                            </li>
+                                        </ItemTemplate>
+                                    </asp:Repeater>
+                                    <asp:LinqDataSource ID="phantichdudoanDts" runat="server" ContextTypeName="BongDaSo.BongDaSoDataContext" EntityTypeName="" TableName="TinTucs" Where="idLoai == @idLoai">
+                                        <WhereParameters>
+                                            <asp:Parameter DefaultValue="4" Name="idLoai" Type="Int32" />
+                                        </WhereParameters>
+                                    </asp:LinqDataSource>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="single_post_content">
+                        <h2><span>Photography</span></h2>
+                        <ul class="photograph_nav  wow fadeInDown">
+                            <asp:Repeater ID="Repeater4" runat="server">
+                                <ItemTemplate>
+                                    <li>
+                                        <div class="photo_grid">
+                                            <figure class="effect-layla">
+                                                <a class="fancybox-buttons" data-fancybox-group="button" href="<%#Eval("id","Desc.aspx?ID={0}") %>" title="<%#Eval("title") %>">
+                                                    <img src="<%#Eval("cover") %>" alt="" height="375" width="500" /></a>
+                                            </figure>
+                                        </div>
+                                    </li>
+                                </ItemTemplate>
+                            </asp:Repeater>
+                        </ul>
+                    </div>
+                    <div class="single_post_content">
+                        <h2><span>Báo cáo trận đấu</span></h2>
+                        <div class="single_post_content_left">
+                            <ul class="business_catgnav">
+                                <li>
+                                    <figure class="bsbig_fig  wow fadeInDown">
+                                        <a class="featured_img" href="<%#Eval("id","Desc.aspx?ID={0}") %>"><span class="overlay"></span>
+                                            <asp:Image ID="Image3" runat="server" OnDataBinding="Page_Load" />
+                                        </a>
+                                        <figcaption>
+                                            <asp:HyperLink ID="HyperLink3" runat="server">HyperLink</asp:HyperLink>
+                                        </figcaption>
+                                        <p>
+                                            <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
+                                        </p>
+                                    </figure>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="single_post_content_right">
+                            <ul class="spost_nav">
+                                <asp:Repeater ID="Repeater5" runat="server" DataSourceID="DtsBaoCao">
+                                    <ItemTemplate>
+                                        <li>
+                                            <div class="media wow fadeInDown">
+                                                <a href="<%#Eval("id","Desc.aspx?ID={0}") %>" class="media-left">
+                                                    <img alt="" src="<%#Eval("cover") %>">
+                                                </a>
+                                                <div class="media-body"><a href="<%#Eval("id","Desc.aspx?ID={0}") %>" class="catg_title"><%#Eval("title") %></a> </div>
+                                            </div>
+                                        </li>
+
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                                <asp:LinqDataSource ID="DtsBaoCao" runat="server" ContextTypeName="BongDaSo.BongDaSoDataContext" EntityTypeName="" OrderBy="ngayDang desc, gioDang desc, luotXem desc" TableName="TinTucs" Where="idLoai == @idLoai">
+                                    <WhereParameters>
+                                        <asp:Parameter DefaultValue="5" Name="idLoai" Type="Int32" />
+                                    </WhereParameters>
+                                </asp:LinqDataSource>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <aside class="right_content">
+                    <div class="single_sidebar">
+                        <h2><span>Popular Post</span></h2>
+                        <asp:LinqDataSource ID="LinqluotView" runat="server" ContextTypeName="BongDaSo.BongDaSoDataContext" EntityTypeName="" OrderBy="luotXem desc" TableName="TinTucs"></asp:LinqDataSource>
+                        <ul class="spost_nav">
+                            <asp:Repeater ID="rpMostPop" runat="server">
+                                <ItemTemplate>
+                                    <li>
+                                        <div class="media wow fadeInDown">
+                                            <a href="/" class="media-left">
+                                                <img alt="" src="<%#Eval("cover") %>">
+                                            </a>
+                                            <div class="media-body">
+                                                <a href="/" class="catg_title"><%#Eval("title") %></a>
+                                            </div>
+                                    </li>
+
+                                </ItemTemplate>
+                            </asp:Repeater>
+
+                        </ul>
+                    </div>
+                    <div class="single_sidebar">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#category" aria-controls="home" role="tab" data-toggle="tab">Category</a></li>
+                            <li role="presentation"><a href="#video" aria-controls="profile" role="tab" data-toggle="tab">Video</a></li>
+                            <li role="presentation"><a href="#comments" aria-controls="messages" role="tab" data-toggle="tab">Comments</a></li>
+                            
+                        </ul>
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="category">
+                                <ul>
+                                    <asp:Repeater ID="Repeater3" runat="server" DataSourceID="DtsLoaiTin">
+                                        <ItemTemplate>
+                                            <li class="cat-item"><a href="#"><%#Eval("tenLoai") %></a></li>
+                                        </ItemTemplate>
+                                    </asp:Repeater>
+                                    <asp:LinqDataSource ID="DtsLoaiTin" runat="server" ContextTypeName="BongDaSo.BongDaSoDataContext" EntityTypeName="" TableName="LoaiTins">
+                                    </asp:LinqDataSource>
+                                </ul>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="video">
+                                <div class="vide_area">
+                                    <iframe width="100%" height="250" src="https://www.youtube.com/embed/OGGiJtRCHJM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="comments">
                                 <ul class="spost_nav">
                                     <li>
                                         <div class="media wow fadeInDown">
                                             <a href="pages/single_page.html" class="media-left">
                                                 <img alt="" src="images/post_img1.jpg">
                                             </a>
-                                            <div class="media-body"><a href="pages/single_page.html" class="catg_title">Aliquam malesuada diam eget turpis varius 1</a> </div>
-                                        </div>
+                                            <div class="media-body"><a href="pages/single_page.html" class="catg_title">Aliquam malesuada diam eget turpis varius 1                           </div>
                                     </li>
                                     <li>
                                         <div class="media wow fadeInDown">
@@ -505,121 +527,37 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4">
-                    <aside class="right_content">
-                        <div class="single_sidebar">
-                            <h2><span>Popular Post</span></h2>
-                            <asp:LinqDataSource ID="LinqluotView" runat="server" ContextTypeName="BongDaSo.BongDaSoDataContext" EntityTypeName="" OrderBy="luotXem desc" TableName="TinTucs"></asp:LinqDataSource>
-                            <ul class="spost_nav">
-                                <asp:Repeater ID="rpMostPop" runat="server" DataSourceID="LinqluotView">
-                                    <ItemTemplate>
-                                        <li>
-                                            <div class="media wow fadeInDown">
-                                                <a href="/" class="media-left">
-                                                    <img alt="" src="<%#Eval("cover") %>">
-                                                </a>
-                                                <div class="media-body"><a href="/" class="catg_title"><%#Eval("title") %></a>
-                                            </div>
-                                        </li>
-
-                                    </ItemTemplate>
-                                </asp:Repeater>
-                               
-                            </ul>
-                        </div>
-                        <div class="single_sidebar">
-                            <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation" class="active"><a href="#category" aria-controls="home" role="tab" data-toggle="tab">Category</a></li>
-                                <li role="presentation"><a href="#video" aria-controls="profile" role="tab" data-toggle="tab">Video</a></li>
-                                <li role="presentation"><a href="#comments" aria-controls="messages" role="tab" data-toggle="tab">Comments</a></li>
-                            </ul>
-                            <div class="tab-content">
-                                <div role="tabpanel" class="tab-pane active" id="category">
-                                    <ul>
-                                        <li class="cat-item"><a href="#">Sports</a></li>
-                                        <li class="cat-item"><a href="#">Fashion</a></li>
-                                        <li class="cat-item"><a href="#">Business</a></li>
-                                        <li class="cat-item"><a href="#">Technology</a></li>
-                                        <li class="cat-item"><a href="#">Games</a></li>
-                                        <li class="cat-item"><a href="#">Life &amp; Style</a></li>
-                                        <li class="cat-item"><a href="#">Photography</a></li>
-                                    </ul>
-                                </div>
-                                <div role="tabpanel" class="tab-pane" id="video">
-                                    <div class="vide_area">
-                                        <iframe width="100%" height="250" src="http://www.youtube.com/embed/h5QWbURNEpA?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
-                                    </div>
-                                </div>
-                                <div role="tabpanel" class="tab-pane" id="comments">
-                                    <ul class="spost_nav">
-                                        <li>
-                                            <div class="media wow fadeInDown">
-                                                <a href="pages/single_page.html" class="media-left">
-                                                    <img alt="" src="images/post_img1.jpg">
-                                                </a>
-                                                <div class="media-body"><a href="pages/single_page.html" class="catg_title">Aliquam malesuada diam eget turpis varius 1</a> </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="media wow fadeInDown">
-                                                <a href="pages/single_page.html" class="media-left">
-                                                    <img alt="" src="images/post_img2.jpg">
-                                                </a>
-                                                <div class="media-body"><a href="pages/single_page.html" class="catg_title">Aliquam malesuada diam eget turpis varius 2</a> </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="media wow fadeInDown">
-                                                <a href="pages/single_page.html" class="media-left">
-                                                    <img alt="" src="images/post_img1.jpg">
-                                                </a>
-                                                <div class="media-body"><a href="pages/single_page.html" class="catg_title">Aliquam malesuada diam eget turpis varius 3</a> </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="media wow fadeInDown">
-                                                <a href="pages/single_page.html" class="media-left">
-                                                    <img alt="" src="images/post_img2.jpg">
-                                                </a>
-                                                <div class="media-body"><a href="pages/single_page.html" class="catg_title">Aliquam malesuada diam eget turpis varius 4</a> </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single_sidebar wow fadeInDown">
-                            <h2><span>Sponsor</span></h2>
-                            <a class="sideAdd" href="#">
-                                <img src="images/add_img.jpg" alt=""></a>
-                        </div>
-                        <div class="single_sidebar wow fadeInDown">
-                            <h2><span>Category Archive</span></h2>
-                            <select class="catgArchive">
-                                <option>Select Category</option>
-                                <option>Life styles</option>
-                                <option>Sports</option>
-                                <option>Technology</option>
-                                <option>Treads</option>
-                            </select>
-                        </div>
-                        <div class="single_sidebar wow fadeInDown">
-                            <h2><span>Links</span></h2>
-                            <ul>
-                                <li><a href="#">Blog</a></li>
-                                <li><a href="#">Rss Feed</a></li>
-                                <li><a href="#">Login</a></li>
-                                <li><a href="#">Life &amp; Style</a></li>
-                            </ul>
-                        </div>
-                    </aside>
-                </div>
+                    <div class="single_sidebar wow fadeInDown">
+                        <h2><span>Sponsor</span></h2>
+                        <a class="sideAdd" href="https://www.facebook.com/sgooophx/">
+                            <img src="images/add_img.jpg" alt=""></a>
+                    </div>
+                    <div class="single_sidebar wow fadeInDown">
+                        <h2><span>Category Archive</span></h2>
+                        <select class="catgArchive">
+                            <option>Select Category</option>
+                            <option>Life styles</option>
+                            <option>Sports</option>
+                            <option>Technology</option>
+                            <option>Treads</option>
+                        </select>
+                    </div>
+                    <div class="single_sidebar wow fadeInDown">
+                        <h2><span>Links</span></h2>
+                        <ul>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Rss Feed</a></li>
+                            <li><a href="#">Login</a></li>
+                            <li><a href="#">Life &amp; Style</a></li>
+                        </ul>
+                    </div>
+                </aside>
             </div>
-        </section>
+        </div>
+    </section>
 
 
-        </span>
+    </span>
 
 
 </asp:Content>
