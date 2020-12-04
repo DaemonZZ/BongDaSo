@@ -213,13 +213,13 @@ namespace BongDaSo
         protected global::System.Web.UI.WebControls.Repeater rpMostPop;
 
         /// <summary>
-        /// Repeater3 control.
+        /// rpCatTab control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater Repeater3;
+        protected global::System.Web.UI.WebControls.Repeater rpCatTab;
 
         /// <summary>
         /// DtsLoaiTin control.

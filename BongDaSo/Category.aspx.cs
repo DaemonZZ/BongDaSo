@@ -15,8 +15,9 @@ namespace BongDaSo
         int pageSize = 3;
         int page = 1;
         int totalPage = 0;
-        int idCat = 1;
+        int idCat = 0;
         int total = 0;
+        int loai = 0;
         BongDaSoDataContext dbc = new BongDaSoDataContext();
        
         protected void Page_Load(object sender, EventArgs e)
@@ -32,14 +33,29 @@ namespace BongDaSo
         {
             int.TryParse("" + Request["page"], out page);
             int.TryParse("" + Request["GiaiDau"], out idCat);
+            int.TryParse("" + Request["Loai"], out loai);
             if (page > 0)
             {
                 page = page - 1;
             }
             int startIndex = page * pageSize;
-            var totallist = dbc.TinTucs.Where(p => p.idGiaiDau == idCat).OrderByDescending(p => p.ngayDang).OrderByDescending(p => p.gioDang);
-            total = totallist.Count();
-            var listTin = dbc.TinTucs.Where(p=>p.idGiaiDau==idCat).OrderByDescending(p => p.ngayDang).OrderByDescending(p => p.gioDang).Skip(startIndex).Take(pageSize);
+            var totallist = new List<TinTuc>();
+            
+            var listTin = new List<TinTuc>();
+            
+            if (idCat != 0)
+            {
+                listTin = dbc.TinTucs.Where(p=>p.idGiaiDau==idCat).OrderByDescending(p => p.ngayDang).OrderByDescending(p => p.gioDang).Skip(startIndex).Take(pageSize).ToList();
+                totallist = dbc.TinTucs.Where(p => p.idGiaiDau == idCat).OrderByDescending(p => p.ngayDang).OrderByDescending(p => p.gioDang).ToList();
+                total = totallist.Count();
+            }
+            if (loai != 0)
+            {
+                listTin=dbc.TinTucs.Where(p=>p.idLoai==loai).OrderByDescending(p => p.ngayDang).OrderByDescending(p => p.gioDang).Skip(startIndex).Take(pageSize).ToList();
+                totallist = dbc.TinTucs.Where(p => p.idLoai == loai).OrderByDescending(p => p.ngayDang).OrderByDescending(p => p.gioDang).ToList();
+                total = totallist.Count();
+            }
+
             DataList1.DataSource = listTin;
             DataList1.DataBind();
         }
@@ -82,7 +98,14 @@ namespace BongDaSo
                 {
                     btn.BackColor = Color.Orange;
                 }
-                btn.PostBackUrl = "Category.aspx?GiaiDau="+idCat+"&page=" + (e.Item.ItemIndex + 1);
+                if(int.TryParse(""+Request["GiaiDau"],out idCat))
+                {
+                    btn.PostBackUrl = "Category.aspx?GiaiDau="+idCat+"&page=" + (e.Item.ItemIndex + 1);
+                }
+                if(int.TryParse("" + Request["loai"], out loai))
+                {
+                    btn.PostBackUrl = "Category.aspx?loai="+loai+"&page=" + (e.Item.ItemIndex + 1);
+                }
             }
         }
 

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.375, 13.625" name="BongDaSo">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.375, 13.875" name="BongDaSo">
   <DataContextMoniker Name="/BongDaSoDataContext" />
   <nestedChildShapes>
     <classShape Id="b6960311-e370-46c9-b4be-d3d4eef22281" absoluteBounds="3.5, 8, 2, 1.5785953776041666">
@@ -24,12 +24,6 @@
       <DataClassMoniker Name="/BongDaSoDataContext/GiaiDau" />
       <nestedChildShapes>
         <elementListCompartment Id="dce47a5f-12f0-41d1-8d3a-924f7f051dc4" absoluteBounds="0.765, 9.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="96b5f28c-8449-4092-9edd-a39cbad79c26" absoluteBounds="3.5, 10.875, 2, 2.5401025390624987">
-      <DataClassMoniker Name="/BongDaSoDataContext/LichThiDau" />
-      <nestedChildShapes>
-        <elementListCompartment Id="d3241a0b-357a-42b8-879f-f5c5ca51c13a" absoluteBounds="3.515, 11.335, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="ebe15d07-80d3-4de5-83a4-dbff7e45bea7" absoluteBounds="6.5, 0.75, 2, 1.1939925130208335">
@@ -57,18 +51,11 @@
         <classShapeMoniker Id="b6960311-e370-46c9-b4be-d3d4eef22281" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 9.41429768880208); (3.5 : 9.41429768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.75 : 9.41429768880208); (3.22916416666667 : 9.41429768880208 : JumpStart); (3.39583083333333 : 9.41429768880208 : JumpEnd); (3.5 : 9.41429768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BongDaSoDataContext/GiaiDau/GiaiDau_BangDiem" />
       <nodes>
         <classShapeMoniker Id="53300841-bd0b-4f7c-8cc0-70bdf6621f32" />
         <classShapeMoniker Id="b6960311-e370-46c9-b4be-d3d4eef22281" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(1.75 : 10.4439925130208); (1.75 : 12.1450512695312); (3.5 : 12.1450512695312)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/BongDaSoDataContext/GiaiDau/GiaiDau_LichThiDau" />
-      <nodes>
-        <classShapeMoniker Id="53300841-bd0b-4f7c-8cc0-70bdf6621f32" />
-        <classShapeMoniker Id="96b5f28c-8449-4092-9edd-a39cbad79c26" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(5.5 : 4.28929768880208); (6.25 : 4.28929768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
@@ -78,7 +65,7 @@
         <classShapeMoniker Id="65eeef36-060d-429e-a440-fd760fb51eeb" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 4.34699625651042); (3.5 : 4.34699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 4.34699625651042); (3.5 : 4.34699625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BongDaSoDataContext/LoaiUser/LoaiUser_User" />
       <nodes>
         <classShapeMoniker Id="30f1e1d4-2fab-4f46-9dc2-001393b66275" />
@@ -91,32 +78,59 @@
         <elementListCompartment Id="c7574717-c955-4ebd-8f6b-d9822a2e0690" absoluteBounds="9.14, 3.96, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(9.125 : 4.41909912109375); (8.48958333333333 : 4.41909912109375 : JumpStart); (8.32291666666667 : 4.41909912109375 : JumpEnd); (8.25 : 4.41909912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/BongDaSoDataContext/TinTuc/TinTuc1_BinhLuan" />
+    <associationConnector edgePoints="[(9.125 : 4.41909912109375); (8.25 : 4.41909912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BongDaSoDataContext/TinTuc/TinTuc_BinhLuan" />
       <nodes>
         <classShapeMoniker Id="bddd2c0c-d566-4fe4-a020-7349b6c73bf2" />
         <classShapeMoniker Id="65eeef36-060d-429e-a440-fd760fb51eeb" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 10.0425439453125); (10.125 : 10.0425439453125); (10.125 : 6.80930826822917)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/BongDaSoDataContext/GiaiDau/GiaiDau_TinTuc1" />
+    <associationConnector edgePoints="[(2.75 : 10.0425439453125); (10.125 : 10.0425439453125); (10.125 : 6.80930826822917)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BongDaSoDataContext/GiaiDau/GiaiDau_TinTuc" />
       <nodes>
         <classShapeMoniker Id="53300841-bd0b-4f7c-8cc0-70bdf6621f32" />
         <classShapeMoniker Id="bddd2c0c-d566-4fe4-a020-7349b6c73bf2" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.40625 : 1.94399251302083); (8.40625 : 6.10500325520833); (9.125 : 6.10500325520833)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/BongDaSoDataContext/LoaiTin/LoaiTin_TinTuc1" />
+    <associationConnector edgePoints="[(8.40625 : 1.94399251302083); (8.40625 : 6.10500325520833); (9.125 : 6.10500325520833)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BongDaSoDataContext/LoaiTin/LoaiTin_TinTuc" />
       <nodes>
         <classShapeMoniker Id="ebe15d07-80d3-4de5-83a4-dbff7e45bea7" />
         <classShapeMoniker Id="bddd2c0c-d566-4fe4-a020-7349b6c73bf2" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(4.5 : 5.07859537760417); (4.5 : 5.72159824869792); (8.32291666666667 : 5.72159824869792 : JumpStart); (8.48958333333333 : 5.72159824869792 : JumpEnd); (9.125 : 5.72159824869792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/BongDaSoDataContext/User/User_TinTuc1" />
+    <associationConnector edgePoints="[(4.5 : 5.07859537760417); (4.5 : 5.72159824869792); (9.125 : 5.72159824869792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BongDaSoDataContext/User/User_TinTuc" />
       <nodes>
         <classShapeMoniker Id="91195f72-491a-4a50-9243-00060a31ffa6" />
         <classShapeMoniker Id="bddd2c0c-d566-4fe4-a020-7349b6c73bf2" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="28653935-9a91-4be9-949b-59ff8ac6b13e" absoluteBounds="3.25, 11.125, 2, 2.5401025390625">
+      <DataClassMoniker Name="/BongDaSoDataContext/LichThiDau" />
+      <nestedChildShapes>
+        <elementListCompartment Id="52b553f1-7a66-4a0e-8721-34566d67f5a1" absoluteBounds="3.265, 11.585, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 7.19597295898438); (3.34375 : 7.19597295898438); (3.34375 : 11.125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BongDaSoDataContext/DoiBong/DoiBong_LichThiDau" />
+      <nodes>
+        <classShapeMoniker Id="abfbbf65-c613-4a12-9942-690dc45b7394" />
+        <classShapeMoniker Id="28653935-9a91-4be9-949b-59ff8ac6b13e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 6.44032098632812); (3.3124975 : 6.44032098632812); (3.3124975 : 11.125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BongDaSoDataContext/DoiBong/DoiBong_LichThiDau1" />
+      <nodes>
+        <classShapeMoniker Id="abfbbf65-c613-4a12-9942-690dc45b7394" />
+        <classShapeMoniker Id="28653935-9a91-4be9-949b-59ff8ac6b13e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 10.4439925130208); (1.75 : 12.3950512695312); (3.25 : 12.3950512695312)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BongDaSoDataContext/GiaiDau/GiaiDau_LichThiDau" />
+      <nodes>
+        <classShapeMoniker Id="53300841-bd0b-4f7c-8cc0-70bdf6621f32" />
+        <classShapeMoniker Id="28653935-9a91-4be9-949b-59ff8ac6b13e" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

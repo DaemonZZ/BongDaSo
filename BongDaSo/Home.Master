@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="BongDaSo.SiteMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Home.master.cs" Inherits="BongDaSo.Home" %>
 
 <!DOCTYPE html>
 
@@ -17,8 +17,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/jquery.fancybox.css">
     <link rel="stylesheet" type="text/css" href="assets/css/theme.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/login.css">
-
+    <link rel="stylesheet" type="text/css" href="assets/css/thread.css">
     
 
     <asp:PlaceHolder runat="server">

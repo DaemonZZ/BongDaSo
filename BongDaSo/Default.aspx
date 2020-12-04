@@ -476,9 +476,9 @@
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane active" id="category">
                                 <ul>
-                                    <asp:Repeater ID="Repeater3" runat="server" DataSourceID="DtsLoaiTin">
+                                    <asp:Repeater ID="rpCatTab" runat="server" DataSourceID="DtsLoaiTin">
                                         <ItemTemplate>
-                                            <li class="cat-item"><a href="#"><%#Eval("tenLoai") %></a></li>
+                                            <li class="cat-item"><a href="<%#Eval("id","Category.aspx?Loai={0}") %>"><%#Eval("tenLoai") %></a></li>
                                         </ItemTemplate>
                                     </asp:Repeater>
                                     <asp:LinqDataSource ID="DtsLoaiTin" runat="server" ContextTypeName="BongDaSo.BongDaSoDataContext" EntityTypeName="" TableName="LoaiTins">
