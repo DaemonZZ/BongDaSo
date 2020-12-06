@@ -7,9 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BongDaSo {
-    
-    
-    public partial class NewPost1 {
+
+namespace BongDaSo
+{
+    public partial class UserCP
+    {
     }
 }

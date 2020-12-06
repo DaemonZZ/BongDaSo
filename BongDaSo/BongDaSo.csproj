@@ -107,8 +107,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="assets\css\all.css" />
     <Content Include="assets\css\animate.css" />
     <Content Include="assets\css\bootstrap.min.css" />
+    <Content Include="assets\css\bootstrap4.min.css" />
     <Content Include="assets\css\font-awesome.min.css" />
     <Content Include="assets\css\font.css" />
     <Content Include="assets\css\images\blank.gif" />
@@ -126,17 +128,20 @@
     <Content Include="assets\css\login.css" />
     <Content Include="assets\css\slick.css" />
     <Content Include="assets\css\style.css" />
+    <Content Include="assets\css\style4.css" />
     <Content Include="assets\css\theme.css" />
-    <Content Include="assets\css\thread.css" />
+    <Content Include="assets\css\user.css" />
     <Content Include="assets\fonts\fontawesome-webfont.svg" />
     <Content Include="assets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="assets\js\bootstrap.min.js" />
+    <Content Include="assets\js\bootstrap4.min.js" />
     <Content Include="assets\js\custom.js" />
     <Content Include="assets\js\html5shiv.min.js" />
     <Content Include="assets\js\jquery.fancybox.pack.js" />
     <Content Include="assets\js\jquery.li-scroller.1.0.js" />
     <Content Include="assets\js\jquery.min.js" />
     <Content Include="assets\js\jquery.newsTicker.min.js" />
+    <Content Include="assets\js\jquery3.min.js" />
     <Content Include="assets\js\respond.min.js" />
     <Content Include="assets\js\slick.min.js" />
     <Content Include="assets\js\wow.min.js" />
@@ -177,10 +182,12 @@
     <Content Include="Global.asax" />
     <Content Include="images\login1.png" />
     <Content Include="images\logout.png" />
+    <Content Include="images\thongke.png" />
     <Content Include="Lich.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="logout.aspx" />
     <Content Include="NewPost.aspx" />
+    <Content Include="UserCP.aspx" />
     <Content Include="WebForm1.aspx" />
     <None Include="BongDaSo.dbml.layout">
       <DependentUpon>BongDaSo.dbml</DependentUpon>
@@ -338,6 +345,13 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="TinTucBLL.cs" />
+    <Compile Include="UserCP.aspx.cs">
+      <DependentUpon>UserCP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserCP.aspx.designer.cs">
+      <DependentUpon>UserCP.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

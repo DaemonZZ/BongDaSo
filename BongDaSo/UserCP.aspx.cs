@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace BongDaSo
 {
-    public partial class Home : System.Web.UI.MasterPage
+    public partial class UserCP : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

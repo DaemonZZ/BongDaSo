@@ -55,7 +55,7 @@
                                         { %> 
                                         `   <li><a href="#">Đăng bài</a></li> <%
                                          } %>
-                                            <li><a href="#">User Control Panel</a></li>
+                                            <li><a href="UserCP.aspx">User Control Panel</a></li>
                                  <%} %>
                             </ul>
                         </div>
