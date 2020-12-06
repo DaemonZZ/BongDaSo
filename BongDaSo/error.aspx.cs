@@ -7,14 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace BongDaSo
 {
-    public partial class Home : System.Web.UI.MasterPage
+    public partial class error : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!(Boolean)Session["user"])
-            {
-                Response.Redirect("error.aspx");
-            }
+
         }
     }
 }

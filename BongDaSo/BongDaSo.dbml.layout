@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.375, 13.875" name="BongDaSo">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 13.875" name="BongDaSo">
   <DataContextMoniker Name="/BongDaSoDataContext" />
   <nestedChildShapes>
     <classShape Id="b6960311-e370-46c9-b4be-d3d4eef22281" absoluteBounds="3.5, 8, 2, 1.5785953776041666">
@@ -51,7 +51,7 @@
         <classShapeMoniker Id="b6960311-e370-46c9-b4be-d3d4eef22281" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 9.41429768880208); (3.22916416666667 : 9.41429768880208 : JumpStart); (3.39583083333333 : 9.41429768880208 : JumpEnd); (3.5 : 9.41429768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.75 : 9.41429768880208); (3.26041666666667 : 9.41429768880208 : JumpStart); (3.42708333333333 : 9.41429768880208 : JumpEnd); (3.5 : 9.41429768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BongDaSoDataContext/GiaiDau/GiaiDau_BangDiem" />
       <nodes>
         <classShapeMoniker Id="53300841-bd0b-4f7c-8cc0-70bdf6621f32" />
@@ -72,40 +72,6 @@
         <classShapeMoniker Id="91195f72-491a-4a50-9243-00060a31ffa6" />
       </nodes>
     </associationConnector>
-    <classShape Id="bddd2c0c-d566-4fe4-a020-7349b6c73bf2" absoluteBounds="9.125, 3.5, 2, 3.3093082682291666">
-      <DataClassMoniker Name="/BongDaSoDataContext/TinTuc" />
-      <nestedChildShapes>
-        <elementListCompartment Id="c7574717-c955-4ebd-8f6b-d9822a2e0690" absoluteBounds="9.14, 3.96, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <associationConnector edgePoints="[(9.125 : 4.41909912109375); (8.25 : 4.41909912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/BongDaSoDataContext/TinTuc/TinTuc_BinhLuan" />
-      <nodes>
-        <classShapeMoniker Id="bddd2c0c-d566-4fe4-a020-7349b6c73bf2" />
-        <classShapeMoniker Id="65eeef36-060d-429e-a440-fd760fb51eeb" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 10.0425439453125); (10.125 : 10.0425439453125); (10.125 : 6.80930826822917)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/BongDaSoDataContext/GiaiDau/GiaiDau_TinTuc" />
-      <nodes>
-        <classShapeMoniker Id="53300841-bd0b-4f7c-8cc0-70bdf6621f32" />
-        <classShapeMoniker Id="bddd2c0c-d566-4fe4-a020-7349b6c73bf2" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(8.40625 : 1.94399251302083); (8.40625 : 6.10500325520833); (9.125 : 6.10500325520833)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/BongDaSoDataContext/LoaiTin/LoaiTin_TinTuc" />
-      <nodes>
-        <classShapeMoniker Id="ebe15d07-80d3-4de5-83a4-dbff7e45bea7" />
-        <classShapeMoniker Id="bddd2c0c-d566-4fe4-a020-7349b6c73bf2" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(4.5 : 5.07859537760417); (4.5 : 5.72159824869792); (9.125 : 5.72159824869792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/BongDaSoDataContext/User/User_TinTuc" />
-      <nodes>
-        <classShapeMoniker Id="91195f72-491a-4a50-9243-00060a31ffa6" />
-        <classShapeMoniker Id="bddd2c0c-d566-4fe4-a020-7349b6c73bf2" />
-      </nodes>
-    </associationConnector>
     <classShape Id="28653935-9a91-4be9-949b-59ff8ac6b13e" absoluteBounds="3.25, 11.125, 2, 2.5401025390625">
       <DataClassMoniker Name="/BongDaSoDataContext/LichThiDau" />
       <nestedChildShapes>
@@ -119,7 +85,7 @@
         <classShapeMoniker Id="28653935-9a91-4be9-949b-59ff8ac6b13e" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 6.44032098632812); (3.3124975 : 6.44032098632812); (3.3124975 : 11.125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.75 : 6.44032098632812); (2.97916541666667 : 6.44032098632812 : JumpStart); (3.14583208333333 : 6.44032098632812 : JumpEnd); (3.3124975 : 6.44032098632812); (3.3124975 : 11.125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/BongDaSoDataContext/DoiBong/DoiBong_LichThiDau1" />
       <nodes>
         <classShapeMoniker Id="abfbbf65-c613-4a12-9942-690dc45b7394" />
@@ -131,6 +97,53 @@
       <nodes>
         <classShapeMoniker Id="53300841-bd0b-4f7c-8cc0-70bdf6621f32" />
         <classShapeMoniker Id="28653935-9a91-4be9-949b-59ff8ac6b13e" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="913a197a-37e3-4882-98ef-7b39fc8fbfb7" absoluteBounds="2.125, 2.125, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/BongDaSoDataContext/TinhTrang" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0ba25d1f-9ad1-4e26-8d0b-6d32f9a698f1" absoluteBounds="2.14, 2.585, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="51d43792-d39f-4d1c-8891-78a77f1c2f63" absoluteBounds="5.625, 6.25, 2, 3.1170068359375">
+      <DataClassMoniker Name="/BongDaSoDataContext/TinTuc" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3e0bf47c-61db-4fdd-836e-48e5373d5420" absoluteBounds="5.64, 6.71, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.9375 : 6.25); (6.9375 : 5.3381982421875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BongDaSoDataContext/TinTuc/TinTuc_BinhLuan" />
+      <nodes>
+        <classShapeMoniker Id="51d43792-d39f-4d1c-8891-78a77f1c2f63" />
+        <classShapeMoniker Id="65eeef36-060d-429e-a440-fd760fb51eeb" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 10.0425439453125); (3.26041666666667 : 10.0425439453125 : JumpStart); (3.42708333333333 : 10.0425439453125 : JumpEnd); (6.625 : 10.0425439453125); (6.625 : 9.3670068359375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BongDaSoDataContext/GiaiDau/GiaiDau_TinTuc" />
+      <nodes>
+        <classShapeMoniker Id="53300841-bd0b-4f7c-8cc0-70bdf6621f32" />
+        <classShapeMoniker Id="51d43792-d39f-4d1c-8891-78a77f1c2f63" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.40625 : 1.94399251302083); (8.40625 : 7.80850341796875); (7.625 : 7.80850341796875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BongDaSoDataContext/LoaiTin/LoaiTin_TinTuc" />
+      <nodes>
+        <classShapeMoniker Id="ebe15d07-80d3-4de5-83a4-dbff7e45bea7" />
+        <classShapeMoniker Id="51d43792-d39f-4d1c-8891-78a77f1c2f63" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.06249875 : 3.31899251302083); (3.06249875 : 7.75564697265625); (3.26041666666667 : 7.75564697265625 : JumpStart); (3.42708333333333 : 7.75564697265625 : JumpEnd); (4.41666666666667 : 7.75564697265625 : JumpStart); (4.58333333333333 : 7.75564697265625 : JumpEnd); (5.625 : 7.75564697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BongDaSoDataContext/TinhTrang/TinhTrang_TinTuc" />
+      <nodes>
+        <classShapeMoniker Id="913a197a-37e3-4882-98ef-7b39fc8fbfb7" />
+        <classShapeMoniker Id="51d43792-d39f-4d1c-8891-78a77f1c2f63" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 5.07859537760417); (5.875 : 5.45359537760417); (5.875 : 5.875); (5.25 : 5.875); (5.625 : 6.25)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/BongDaSoDataContext/User/User_TinTuc" />
+      <nodes>
+        <classShapeMoniker Id="91195f72-491a-4a50-9243-00060a31ffa6" />
+        <classShapeMoniker Id="51d43792-d39f-4d1c-8891-78a77f1c2f63" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

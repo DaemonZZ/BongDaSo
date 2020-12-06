@@ -24,6 +24,8 @@ namespace BongDaSo
             Session["partner"] = false;
             Session["viewer"] = false;
             Session["user"] = false;
+            Session["username"] = "";
+
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)

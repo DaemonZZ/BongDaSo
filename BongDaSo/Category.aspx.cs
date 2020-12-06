@@ -45,14 +45,14 @@ namespace BongDaSo
             
             if (idCat != 0)
             {
-                listTin = dbc.TinTucs.Where(p=>p.idGiaiDau==idCat).OrderByDescending(p => p.ngayDang).OrderByDescending(p => p.gioDang).Skip(startIndex).Take(pageSize).ToList();
-                totallist = dbc.TinTucs.Where(p => p.idGiaiDau == idCat).OrderByDescending(p => p.ngayDang).OrderByDescending(p => p.gioDang).ToList();
+                listTin = dbc.TinTucs.Where(p=>p.idGiaiDau==idCat).OrderByDescending(p => p.ngayDang).Skip(startIndex).Take(pageSize).ToList();
+                totallist = dbc.TinTucs.Where(p => p.idGiaiDau == idCat).OrderByDescending(p => p.ngayDang).ToList();
                 total = totallist.Count();
             }
             if (loai != 0)
             {
-                listTin=dbc.TinTucs.Where(p=>p.idLoai==loai).OrderByDescending(p => p.ngayDang).OrderByDescending(p => p.gioDang).Skip(startIndex).Take(pageSize).ToList();
-                totallist = dbc.TinTucs.Where(p => p.idLoai == loai).OrderByDescending(p => p.ngayDang).OrderByDescending(p => p.gioDang).ToList();
+                listTin=dbc.TinTucs.Where(p=>p.idLoai==loai).OrderByDescending(p => p.ngayDang).Skip(startIndex).Take(pageSize).ToList();
+                totallist = dbc.TinTucs.Where(p => p.idLoai == loai).OrderByDescending(p => p.ngayDang).ToList();
                 total = totallist.Count();
             }
 

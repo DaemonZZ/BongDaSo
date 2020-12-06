@@ -37,8 +37,8 @@
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="tenGiai" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="GiaiDau_BangDiem" Member="BangDiems" ThisKey="id" OtherKey="id_Giai" Type="BangDiem" />
-      <Association Name="GiaiDau_TinTuc" Member="TinTucs" ThisKey="id" OtherKey="idGiaiDau" Type="TinTuc" />
       <Association Name="GiaiDau_LichThiDau" Member="LichThiDaus" ThisKey="id" OtherKey="id_Giai" Type="LichThiDau" />
+      <Association Name="GiaiDau_TinTuc" Member="TinTucs" ThisKey="id" OtherKey="idGiaiDau" Type="TinTuc" />
     </Type>
   </Table>
   <Table Name="dbo.LoaiTin" Member="LoaiTins">
@@ -66,27 +66,6 @@
       <Association Name="LoaiUser_User" Member="LoaiUser" ThisKey="id_loai" OtherKey="id" Type="LoaiUser" IsForeignKey="true" DeleteRule="CASCADE" />
     </Type>
   </Table>
-  <Table Name="dbo.TinTuc" Member="TinTucs">
-    <Type Name="TinTuc">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="title" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="tomTat" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="thumb" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="cover" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="noiDung" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="id_User" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ngayDang" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="gioDang" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
-      <Column Name="luotXem" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="doUuTien" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="idLoai" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="idGiaiDau" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="TinTuc_BinhLuan" Member="BinhLuans" ThisKey="id" OtherKey="id_TinTuc" Type="BinhLuan" />
-      <Association Name="GiaiDau_TinTuc" Member="GiaiDau" ThisKey="idGiaiDau" OtherKey="id" Type="GiaiDau" IsForeignKey="true" DeleteRule="CASCADE" />
-      <Association Name="LoaiTin_TinTuc" Member="LoaiTin" ThisKey="idLoai" OtherKey="id" Type="LoaiTin" IsForeignKey="true" DeleteRule="CASCADE" />
-      <Association Name="User_TinTuc" Member="User" ThisKey="id_User" OtherKey="id" Type="User" IsForeignKey="true" DeleteRule="CASCADE" />
-    </Type>
-  </Table>
   <Table Name="dbo.LichThiDau" Member="LichThiDaus">
     <Type Name="LichThiDau">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -103,6 +82,34 @@
       <Association Name="GiaiDau_LichThiDau" Member="GiaiDau" ThisKey="id_Giai" OtherKey="id" Type="GiaiDau" IsForeignKey="true" DeleteRule="CASCADE" />
     </Type>
   </Table>
+  <Table Name="dbo.TinhTrang" Member="TinhTrangs">
+    <Type Name="TinhTrang">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TinhTrang" Member="TinhTrang1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="TinhTrang_TinTuc" Member="TinTucs" ThisKey="id" OtherKey="doUuTien" Type="TinTuc" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TinTuc" Member="TinTucs">
+    <Type Name="TinTuc">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="title" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="tomTat" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="thumb" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="cover" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="noiDung" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="id_User" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ngayDang" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="luotXem" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="doUuTien" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idLoai" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idGiaiDau" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="TinTuc_BinhLuan" Member="BinhLuans" ThisKey="id" OtherKey="id_TinTuc" Type="BinhLuan" />
+      <Association Name="GiaiDau_TinTuc" Member="GiaiDau" ThisKey="idGiaiDau" OtherKey="id" Type="GiaiDau" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="LoaiTin_TinTuc" Member="LoaiTin" ThisKey="idLoai" OtherKey="id" Type="LoaiTin" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="TinhTrang_TinTuc" Member="TinhTrang" ThisKey="doUuTien" OtherKey="id" Type="TinhTrang" IsForeignKey="true" />
+      <Association Name="User_TinTuc" Member="User" ThisKey="id_User" OtherKey="id" Type="User" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
   <Function Name="dbo.Users_Search" Method="Users_Search">
     <Parameter Name="user" Type="System.String" DbType="NVarChar(50)" />
     <Parameter Name="pass" Type="System.String" DbType="NVarChar(50)" />
@@ -112,5 +119,17 @@
       <Column Name="pass" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="id_loai" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
+  </Function>
+  <Function Name="dbo.TinTuc_Insert" Method="TinTuc_Insert">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="title" Type="System.String" DbType="NText" />
+    <Parameter Name="tomTat" Type="System.String" DbType="NText" />
+    <Parameter Name="cover" Type="System.String" DbType="NText" />
+    <Parameter Name="noidung" Type="System.String" DbType="NText" />
+    <Parameter Name="id_User" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ngayDang" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="idLoai" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idGiaiDau" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
   </Function>
 </Database>

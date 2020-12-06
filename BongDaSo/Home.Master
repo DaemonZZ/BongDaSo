@@ -28,7 +28,9 @@
                 <a class="navbar-branch ml-2 mb-1" href="/">
                     <img src="images/thongke.png" height="40" />
                 </a>
-                <div class="ml-3"><h4>Khu vực thành viên</h4></div>
+                <div class="ml-3">
+                    <h4>Khu vực thành viên</h4>
+                </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -60,18 +62,20 @@
                 </div>
 
                 <ul class="list-unstyled components">
-                    <%if ((Boolean)Session["admin"] == true)
+                    <%if ((Boolean)Session["partner"] || (Boolean)Session["admin"])
                         {
-                            %>
+                            if ((Boolean)Session["admin"] == true)
+                            {
+                    %>
                     <li>
                         <a href="#">
-                            <i class="fas fa-plus"></i>
+                            <i class="fas fa-check"></i>
                             Duyệt bài
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <i class="fas fa-plus"></i>
+                            <i class="fas fa-handshake"></i>
                             Quản lý thành viên
                         </a>
                     </li>
@@ -99,6 +103,7 @@
                             </li>
                         </ul>
                     </li>
+                    <%} %>
                     <li>
                         <a href="#">
                             <i class="fas fa-copy"></i>
@@ -115,10 +120,10 @@
                             <li>
                                 <a href="#">Quyền riêng tư</a>
                             </li>
-                            
+
                         </ul>
                     </li>
-                    
+
                     <li>
                         <a href="#">
                             <i class="fas fa-question"></i>
@@ -133,7 +138,7 @@
                     </li>
                 </ul>
 
-               
+
             </nav>
 
             <!-- Page Content  -->
