@@ -4,7 +4,7 @@
 
 
 
-    <asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="BongDaSo.BongDaSoDataContext" EntityTypeName="" OrderBy="ngayDang desc, gioDang desc, doUuTien desc" TableName="TinTucs">
+    <asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="BongDaSo.BongDaSoDataContext" EntityTypeName="" OrderBy="ngayDang desc,  doUuTien desc" TableName="TinTucs">
     </asp:LinqDataSource>
 
     <section id="sliderSection">
@@ -90,9 +90,7 @@
                                             ngayDang:
                                             <asp:TextBox ID="ngayDangTextBox" runat="server" Text='<%# Bind("ngayDang") %>' />
                                             <br />
-                                            gioDang:
-                                            <asp:TextBox ID="gioDangTextBox" runat="server" Text='<%# Bind("gioDang") %>' />
-                                            <br />
+                                            
                                             luotXem:
                                             <asp:TextBox ID="luotXemTextBox" runat="server" Text='<%# Bind("luotXem") %>' />
                                             <br />
@@ -139,9 +137,7 @@
                                             ngayDang:
                                             <asp:TextBox ID="ngayDangTextBox" runat="server" Text='<%# Bind("ngayDang") %>' />
                                             <br />
-                                            gioDang:
-                                            <asp:TextBox ID="gioDangTextBox" runat="server" Text='<%# Bind("gioDang") %>' />
-                                            <br />
+                                            
                                             luotXem:
                                             <asp:TextBox ID="luotXemTextBox" runat="server" Text='<%# Bind("luotXem") %>' />
                                             <br />
@@ -177,7 +173,7 @@
 
                         <div class="single_post_content_right">
                             <ul class="spost_nav">
-                                <asp:LinqDataSource ID="LinqDataSource2" runat="server" ContextTypeName="BongDaSo.BongDaSoDataContext" EntityTypeName="" OrderBy="ngayDang desc, gioDang desc" TableName="TinTucs" Where="idLoai == @idLoai">
+                                <asp:LinqDataSource ID="LinqDataSource2" runat="server" ContextTypeName="BongDaSo.BongDaSoDataContext" EntityTypeName="" OrderBy="ngayDang desc" TableName="TinTucs" Where="idLoai == @idLoai">
                                     <WhereParameters>
                                         <asp:Parameter DefaultValue="2" Name="idLoai" Type="Int32" />
                                     </WhereParameters>
@@ -238,9 +234,7 @@
                                                         ngayDang:
                                                         <asp:DynamicControl ID="ngayDangDynamicControl" runat="server" DataField="ngayDang" Mode="Edit" />
                                                         <br />
-                                                        gioDang:
-                                                        <asp:DynamicControl ID="gioDangDynamicControl" runat="server" DataField="gioDang" Mode="Edit" />
-                                                        <br />
+                                                        
                                                         luotXem:
                                                         <asp:DynamicControl ID="luotXemDynamicControl" runat="server" DataField="luotXem" Mode="Edit" />
                                                         <br />
@@ -287,9 +281,7 @@
                                                         ngayDang:
                                                         <asp:DynamicControl ID="ngayDangDynamicControl" runat="server" DataField="ngayDang" Mode="Insert" ValidationGroup="Insert" />
                                                         <br />
-                                                        gioDang:
-                                                        <asp:DynamicControl ID="gioDangDynamicControl" runat="server" DataField="gioDang" Mode="Insert" ValidationGroup="Insert" />
-                                                        <br />
+                                                        
                                                         luotXem:
                                                         <asp:DynamicControl ID="luotXemDynamicControl" runat="server" DataField="luotXem" Mode="Insert" ValidationGroup="Insert" />
                                                         <br />
@@ -433,7 +425,7 @@
 
                                     </ItemTemplate>
                                 </asp:Repeater>
-                                <asp:LinqDataSource ID="DtsBaoCao" runat="server" ContextTypeName="BongDaSo.BongDaSoDataContext" EntityTypeName="" OrderBy="ngayDang desc, gioDang desc, luotXem desc" TableName="TinTucs" Where="idLoai == @idLoai">
+                                <asp:LinqDataSource ID="DtsBaoCao" runat="server" ContextTypeName="BongDaSo.BongDaSoDataContext" EntityTypeName="" OrderBy="ngayDang desc,  luotXem desc" TableName="TinTucs" Where="idLoai == @idLoai">
                                     <WhereParameters>
                                         <asp:Parameter DefaultValue="5" Name="idLoai" Type="Int32" />
                                     </WhereParameters>

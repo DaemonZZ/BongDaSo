@@ -17,7 +17,7 @@
                                     <asp:Label ID="Label3" runat="server" Text='<%# Eval("title", "{0}") %>'></asp:Label>
                                 </h1>
                                 <div class="post_commentbox"><asp:Label ID="Label4" runat="server" Text='<%# Eval("ngayDang", "{0:d}") %>'></asp:Label>
-<asp:Label ID="Label5" runat="server" Text='<%# Eval("gioDang", "{0}") %>'></asp:Label>
+<asp:Label ID="Label5" runat="server" Text='<%# Eval("luotXem", "{0}") %>'></asp:Label>
 
                                     <asp:Label ID="Label6" runat="server" Text='<%# Eval("idLoai", "{0}") %>'></asp:Label>
                                 </div>
@@ -51,9 +51,7 @@
                                     ngayDang:
                                     <asp:TextBox ID="ngayDangTextBox" runat="server" Text='<%# Bind("ngayDang") %>' />
                                     <br />
-                                    gioDang:
-                                    <asp:TextBox ID="gioDangTextBox" runat="server" Text='<%# Bind("gioDang") %>' />
-                                    <br />
+                                   
                                     luotXem:
                                     <asp:TextBox ID="luotXemTextBox" runat="server" Text='<%# Bind("luotXem") %>' />
                                     <br />
@@ -99,9 +97,6 @@
                                     <br />
                                     ngayDang:
                                     <asp:TextBox ID="ngayDangTextBox" runat="server" Text='<%# Bind("ngayDang") %>' />
-                                    <br />
-                                    gioDang:
-                                    <asp:TextBox ID="gioDangTextBox" runat="server" Text='<%# Bind("gioDang") %>' />
                                     <br />
                                     luotXem:
                                     <asp:TextBox ID="luotXemTextBox" runat="server" Text='<%# Bind("luotXem") %>' />

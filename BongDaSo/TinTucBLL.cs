@@ -27,7 +27,7 @@ namespace BongDaSo
         {
             List<TinTuc> rs = new List<TinTuc>();
             List<TinTuc> list = new List<TinTuc>();
-            list= dbc.TinTucs.OrderByDescending(t => t.ngayDang).OrderByDescending(t => t.gioDang).ToList();
+            list= dbc.TinTucs.OrderByDescending(t => t.ngayDang).ToList();
             
             for(int i = 0; i <= 5; i++)
             {
@@ -39,7 +39,7 @@ namespace BongDaSo
         {
             List<TinTuc> rs = new List<TinTuc>();
             List<TinTuc> list = new List<TinTuc>();
-            list = dbc.TinTucs.OrderByDescending(t => t.ngayDang).OrderByDescending(t => t.gioDang).ToList();
+            list = dbc.TinTucs.OrderByDescending(t => t.ngayDang).ToList();
 
             for (int i = 0; i <= 4; i++)
             {

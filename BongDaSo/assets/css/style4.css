@@ -15,6 +15,10 @@ p {
     line-height: 1.7em;
     color: #000;
 }
+textarea{
+    width:100%;
+    
+}
 
 a,
 a:hover,

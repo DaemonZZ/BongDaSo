@@ -53,7 +53,7 @@
                                     {
                                         if ((Boolean)Session["admin"] == true || (Boolean)Session["partner"] == true)
                                         { %> 
-                                        `   <li><a href="#">Đăng bài</a></li> <%
+                                        `   <li><a href="Newpost.aspx">Đăng bài</a></li> <%
                                          } %>
                                             <li><a href="UserCP.aspx">User Control Panel</a></li>
                                  <%} %>

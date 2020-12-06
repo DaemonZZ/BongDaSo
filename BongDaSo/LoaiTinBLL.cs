@@ -12,5 +12,6 @@ namespace BongDaSo
         {
             return dbc.LoaiTins.Where(l => l.id == id).FirstOrDefault().tenLoai;
         }
+        
     }
 }

@@ -15,6 +15,7 @@ namespace BongDaSo
             Session["partner"] = false;
             Session["viewer"] = false;
             Session["user"] = false;
+            Session["username"] = null;
             Response.Redirect("/");
         }
     }
