@@ -59,5 +59,9 @@ namespace BongDaSo
             }
             return rs;
         }
+        public List<TinTuc> getlistPost(int userid)
+        {
+            return dbc.TinTucs.Where(p => p.id_User == userid).OrderByDescending(p=>p.ngayDang).ToList();
+        }
     }
 }

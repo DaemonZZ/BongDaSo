@@ -13,6 +13,9 @@ namespace BongDaSo
     {
         BongDaSoDataContext dbc = new BongDaSoDataContext();
         int d;
+        TinTuc tin;
+
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,6 +28,15 @@ namespace BongDaSo
                 var lstGiai = dbc.GiaiDaus;
                 cbDanhMuc.DataSource = lstGiai;
                 cbDanhMuc.DataBind();
+                if (Request["ID"]!=null)
+                {
+                    tin = dbc.TinTucs.Where(p => p.id == int.Parse(Request["ID"])).FirstOrDefault();
+                    txtTitle.Text = tin.title;
+                    cbLoai.SelectedIndex = (int)tin.idLoai-1;
+                    cbDanhMuc.SelectedIndex = (int)tin.idGiaiDau-1;
+                    txtTomTat.Text = tin.tomTat;
+                    
+                }
             }
         }
 
@@ -53,17 +65,17 @@ namespace BongDaSo
                     t.cover = filename;
                 }
                 t.noiDung = Request["area2"];
-                String username = (String)Session["username"];
-                User us = dbc.Users.Where(u => u.userName == username).FirstOrDefault();
+                int userid = (int)Session["userid"];
+                User us = dbc.Users.Where(u => u.id == userid).FirstOrDefault();
                 t.id_User = us.id;
                 t.ngayDang = DateTime.Now;
                 t.luotXem = 0;
                 t.doUuTien = 0;
                 t.idLoai = int.Parse(cbLoai.SelectedValue);
                 t.idGiaiDau = int.Parse(cbDanhMuc.SelectedValue);
-                dbc.TinTuc_Insert(t.id, t.title, t.tomTat, t.cover, t.noiDung, t.id_User, t.ngayDang, t.idLoai, t.idGiaiDau);
+                dbc.TinTuc_Insert(t.id, t.title, t.tomTat, t.cover, t.noiDung, t.id_User, t.ngayDang, t.idLoai, t.idGiaiDau,0);
                 showMessage("Đăng bài thành công!");
-                Response.Redirect("UserCP.aspx");
+                Response.Redirect("danhsachbaidang.aspx");
             }
 
         }
@@ -77,5 +89,6 @@ namespace BongDaSo
             string strBuilder = "<script language='javascript'>alert('" + mess + "')</script>";
             Response.Write(strBuilder);
         }
+        
     }
 }

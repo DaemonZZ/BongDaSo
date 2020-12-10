@@ -25,6 +25,7 @@
                             </ItemTemplate>
                         </asp:FormView>
                         <div class="single_page_content">
+
                             <asp:FormView ID="FormView1" runat="server" DataKeyNames="id" DataSourceID="LinqDataSource1">
                                 <EditItemTemplate>
                                     id:
@@ -120,7 +121,7 @@
                                     <asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
                                 </InsertItemTemplate>
                                 <ItemTemplate>
-                                    <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("cover", "{0}") %>' />
+                                    <asp:Image ID="Image1" runat="server" Width="100%" ImageUrl='<%# Eval("cover", "{0}") %>' />
                                     <br />
                                     <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Italic="True" ForeColor="#666666" Text='<%# Eval("tomTat", "{0}") %>'></asp:Label>
                                     <br />

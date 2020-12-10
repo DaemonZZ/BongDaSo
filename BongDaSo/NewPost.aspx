@@ -10,6 +10,11 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="BongDaSo.BongDaSoDataContext" EntityTypeName="" TableName="TinTucs" Where="id == @id">
+        <WhereParameters>
+            <asp:QueryStringParameter DefaultValue="0" Name="id" QueryStringField="ID" Type="Int32" />
+        </WhereParameters>
+    </asp:LinqDataSource>
     <h3 class="ml-3">Thêm bài mới</h3>
     <br />
     <div class="container">
@@ -38,7 +43,8 @@
 
         </div>
         <div class="row mt-2 ml-3">
-                <textarea id="area2" rows="10" name="area2"></textarea>
+                <textarea id="area2" rows="10" name="area2" >
+                </textarea>
         </div>
         <div class="row">
             <div class="col-6">

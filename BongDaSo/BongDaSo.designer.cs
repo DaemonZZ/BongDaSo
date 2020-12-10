@@ -54,12 +54,12 @@ namespace BongDaSo
     partial void InsertLichThiDau(LichThiDau instance);
     partial void UpdateLichThiDau(LichThiDau instance);
     partial void DeleteLichThiDau(LichThiDau instance);
-    partial void InsertTinhTrang(TinhTrang instance);
-    partial void UpdateTinhTrang(TinhTrang instance);
-    partial void DeleteTinhTrang(TinhTrang instance);
     partial void InsertTinTuc(TinTuc instance);
     partial void UpdateTinTuc(TinTuc instance);
     partial void DeleteTinTuc(TinTuc instance);
+    partial void InsertTinhTrang(TinhTrang instance);
+    partial void UpdateTinhTrang(TinhTrang instance);
+    partial void DeleteTinhTrang(TinhTrang instance);
     #endregion
 		
 		public BongDaSoDataContext() : 
@@ -156,19 +156,19 @@ namespace BongDaSo
 			}
 		}
 		
-		public System.Data.Linq.Table<TinhTrang> TinhTrangs
-		{
-			get
-			{
-				return this.GetTable<TinhTrang>();
-			}
-		}
-		
 		public System.Data.Linq.Table<TinTuc> TinTucs
 		{
 			get
 			{
 				return this.GetTable<TinTuc>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TinhTrang> TinhTrangs
+		{
+			get
+			{
+				return this.GetTable<TinhTrang>();
 			}
 		}
 		
@@ -180,9 +180,9 @@ namespace BongDaSo
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TinTuc_Insert")]
-		public int TinTuc_Insert([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NText")] string title, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NText")] string tomTat, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NText")] string cover, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NText")] string noidung, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_User, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> ngayDang, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idLoai, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idGiaiDau)
+		public int TinTuc_Insert([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NText")] string title, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NText")] string tomTat, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NText")] string cover, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NText")] string noidung, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id_User, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> ngayDang, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idLoai, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idGiaiDau, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> tinhTrang)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id, title, tomTat, cover, noidung, id_User, ngayDang, idLoai, idGiaiDau);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id, title, tomTat, cover, noidung, id_User, ngayDang, idLoai, idGiaiDau, tinhTrang);
 			return ((int)(result.ReturnValue));
 		}
 	}
@@ -1867,120 +1867,6 @@ namespace BongDaSo
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TinhTrang")]
-	public partial class TinhTrang : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private string _TinhTrang1;
-		
-		private EntitySet<TinTuc> _TinTucs;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OnTinhTrang1Changing(string value);
-    partial void OnTinhTrang1Changed();
-    #endregion
-		
-		public TinhTrang()
-		{
-			this._TinTucs = new EntitySet<TinTuc>(new Action<TinTuc>(this.attach_TinTucs), new Action<TinTuc>(this.detach_TinTucs));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="TinhTrang", Storage="_TinhTrang1", DbType="NVarChar(50)")]
-		public string TinhTrang1
-		{
-			get
-			{
-				return this._TinhTrang1;
-			}
-			set
-			{
-				if ((this._TinhTrang1 != value))
-				{
-					this.OnTinhTrang1Changing(value);
-					this.SendPropertyChanging();
-					this._TinhTrang1 = value;
-					this.SendPropertyChanged("TinhTrang1");
-					this.OnTinhTrang1Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TinhTrang_TinTuc", Storage="_TinTucs", ThisKey="id", OtherKey="doUuTien")]
-		public EntitySet<TinTuc> TinTucs
-		{
-			get
-			{
-				return this._TinTucs;
-			}
-			set
-			{
-				this._TinTucs.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_TinTucs(TinTuc entity)
-		{
-			this.SendPropertyChanging();
-			entity.TinhTrang = this;
-		}
-		
-		private void detach_TinTucs(TinTuc entity)
-		{
-			this.SendPropertyChanging();
-			entity.TinhTrang = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TinTuc")]
 	public partial class TinTuc : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -2011,15 +1897,17 @@ namespace BongDaSo
 		
 		private System.Nullable<int> _idGiaiDau;
 		
+		private System.Nullable<int> _tinhTrang;
+		
 		private EntitySet<BinhLuan> _BinhLuans;
 		
 		private EntityRef<GiaiDau> _GiaiDau;
 		
 		private EntityRef<LoaiTin> _LoaiTin;
 		
-		private EntityRef<TinhTrang> _TinhTrang;
-		
 		private EntityRef<User> _User;
+		
+		private EntityRef<TinhTrang> _TinhTrang1;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -2049,6 +1937,8 @@ namespace BongDaSo
     partial void OnidLoaiChanged();
     partial void OnidGiaiDauChanging(System.Nullable<int> value);
     partial void OnidGiaiDauChanged();
+    partial void OntinhTrangChanging(System.Nullable<int> value);
+    partial void OntinhTrangChanged();
     #endregion
 		
 		public TinTuc()
@@ -2056,8 +1946,8 @@ namespace BongDaSo
 			this._BinhLuans = new EntitySet<BinhLuan>(new Action<BinhLuan>(this.attach_BinhLuans), new Action<BinhLuan>(this.detach_BinhLuans));
 			this._GiaiDau = default(EntityRef<GiaiDau>);
 			this._LoaiTin = default(EntityRef<LoaiTin>);
-			this._TinhTrang = default(EntityRef<TinhTrang>);
 			this._User = default(EntityRef<User>);
+			this._TinhTrang1 = default(EntityRef<TinhTrang>);
 			OnCreated();
 		}
 		
@@ -2256,7 +2146,7 @@ namespace BongDaSo
 			{
 				if ((this._doUuTien != value))
 				{
-					if (this._TinhTrang.HasLoadedOrAssignedValue)
+					if (this._TinhTrang1.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -2313,6 +2203,26 @@ namespace BongDaSo
 					this._idGiaiDau = value;
 					this.SendPropertyChanged("idGiaiDau");
 					this.OnidGiaiDauChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tinhTrang", DbType="Int")]
+		public System.Nullable<int> tinhTrang
+		{
+			get
+			{
+				return this._tinhTrang;
+			}
+			set
+			{
+				if ((this._tinhTrang != value))
+				{
+					this.OntinhTrangChanging(value);
+					this.SendPropertyChanging();
+					this._tinhTrang = value;
+					this.SendPropertyChanged("tinhTrang");
+					this.OntinhTrangChanged();
 				}
 			}
 		}
@@ -2398,40 +2308,6 @@ namespace BongDaSo
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TinhTrang_TinTuc", Storage="_TinhTrang", ThisKey="doUuTien", OtherKey="id", IsForeignKey=true)]
-		public TinhTrang TinhTrang
-		{
-			get
-			{
-				return this._TinhTrang.Entity;
-			}
-			set
-			{
-				TinhTrang previousValue = this._TinhTrang.Entity;
-				if (((previousValue != value) 
-							|| (this._TinhTrang.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TinhTrang.Entity = null;
-						previousValue.TinTucs.Remove(this);
-					}
-					this._TinhTrang.Entity = value;
-					if ((value != null))
-					{
-						value.TinTucs.Add(this);
-						this._doUuTien = value.id;
-					}
-					else
-					{
-						this._doUuTien = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TinhTrang");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_TinTuc", Storage="_User", ThisKey="id_User", OtherKey="id", IsForeignKey=true, DeleteRule="CASCADE")]
 		public User User
 		{
@@ -2466,6 +2342,40 @@ namespace BongDaSo
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TinhTrang_TinTuc", Storage="_TinhTrang1", ThisKey="doUuTien", OtherKey="id", IsForeignKey=true)]
+		public TinhTrang TinhTrang1
+		{
+			get
+			{
+				return this._TinhTrang1.Entity;
+			}
+			set
+			{
+				TinhTrang previousValue = this._TinhTrang1.Entity;
+				if (((previousValue != value) 
+							|| (this._TinhTrang1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TinhTrang1.Entity = null;
+						previousValue.TinTucs.Remove(this);
+					}
+					this._TinhTrang1.Entity = value;
+					if ((value != null))
+					{
+						value.TinTucs.Add(this);
+						this._doUuTien = value.id;
+					}
+					else
+					{
+						this._doUuTien = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("TinhTrang1");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -2496,6 +2406,120 @@ namespace BongDaSo
 		{
 			this.SendPropertyChanging();
 			entity.TinTuc = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TinhTrang")]
+	public partial class TinhTrang : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private string _Status;
+		
+		private EntitySet<TinTuc> _TinTucs;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OnStatusChanging(string value);
+    partial void OnStatusChanged();
+    #endregion
+		
+		public TinhTrang()
+		{
+			this._TinTucs = new EntitySet<TinTuc>(new Action<TinTuc>(this.attach_TinTucs), new Action<TinTuc>(this.detach_TinTucs));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="NVarChar(50)")]
+		public string Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this.OnStatusChanging(value);
+					this.SendPropertyChanging();
+					this._Status = value;
+					this.SendPropertyChanged("Status");
+					this.OnStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TinhTrang_TinTuc", Storage="_TinTucs", ThisKey="id", OtherKey="doUuTien")]
+		public EntitySet<TinTuc> TinTucs
+		{
+			get
+			{
+				return this._TinTucs;
+			}
+			set
+			{
+				this._TinTucs.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_TinTucs(TinTuc entity)
+		{
+			this.SendPropertyChanging();
+			entity.TinhTrang1 = this;
+		}
+		
+		private void detach_TinTucs(TinTuc entity)
+		{
+			this.SendPropertyChanging();
+			entity.TinhTrang1 = null;
 		}
 	}
 	

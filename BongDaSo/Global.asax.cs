@@ -24,7 +24,7 @@ namespace BongDaSo
             Session["partner"] = false;
             Session["viewer"] = false;
             Session["user"] = false;
-            Session["username"] = "";
+            Session["userid"] = 0;
 
         }
 

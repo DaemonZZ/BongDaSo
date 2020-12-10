@@ -14,6 +14,7 @@ namespace BongDaSo
             if (!(Boolean)Session["user"])
             {
                 Response.Redirect("error.aspx");
+
             }
         }
     }

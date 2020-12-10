@@ -522,7 +522,7 @@
                     <div class="single_sidebar wow fadeInDown">
                         <h2><span>Sponsor</span></h2>
                         <a class="sideAdd" href="https://www.facebook.com/sgooophx/">
-                            <img src="images/add_img.jpg" alt=""></a>
+                            <img src="images/Untitled.png" alt=""></a>
                     </div>
                     <div class="single_sidebar wow fadeInDown">
                         <h2><span>Category Archive</span></h2>
@@ -540,7 +540,7 @@
                             <li><a href="#">Blog</a></li>
                             <li><a href="#">Rss Feed</a></li>
                             <li><a href="#">Login</a></li>
-                            <li><a href="#">Life &amp; Style</a></li>
+                            <li><a href="#">Life  Style</a></li>
                         </ul>
                     </div>
                 </aside>
@@ -549,7 +549,7 @@
     </section>
 
 
-    </span>
+   
 
 
 </asp:Content>

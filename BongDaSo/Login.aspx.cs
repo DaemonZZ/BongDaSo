@@ -25,7 +25,7 @@ namespace BongDaSo
             {
                 Session["user"] = true;
                 us = (User)dbc.Users.Where(p => p.userName==txtLogin.Text).FirstOrDefault();
-                Session["username"] = txtLogin.Text;
+                Session["userid"] = us.id;
                
                 if (us.id_loai == 1)
                 {

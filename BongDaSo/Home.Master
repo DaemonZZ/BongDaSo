@@ -93,7 +93,7 @@
                         </a>
                         <ul class="collapse list-unstyled" id="homeSubmenu">
                             <li>
-                                <a href="#">Danh sách bài đăng</a>
+                                <a href="danhsachbaidang.aspx">Danh sách bài đăng</a>
                             </li>
                             <li>
                                 <a href="#">Thống kê</a>

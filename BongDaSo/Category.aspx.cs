@@ -24,6 +24,8 @@ namespace BongDaSo
         {
             if (!IsPostBack)
             {
+                int.TryParse("" + Request["GiaiDau"], out idCat);
+                this.Title = "Giải đấu :))  "+dbc.GiaiDaus.Where(p => p.id == idCat).FirstOrDefault().tenGiai;
                 loadDataList();
                 doPaging();
             }
@@ -40,7 +42,6 @@ namespace BongDaSo
             }
             int startIndex = page * pageSize;
             var totallist = new List<TinTuc>();
-            
             var listTin = new List<TinTuc>();
             
             if (idCat != 0)
