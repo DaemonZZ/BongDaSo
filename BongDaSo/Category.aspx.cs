@@ -25,7 +25,7 @@ namespace BongDaSo
             if (!IsPostBack)
             {
                 int.TryParse("" + Request["GiaiDau"], out idCat);
-                this.Title = "Giải đấu :))  "+dbc.GiaiDaus.Where(p => p.id == idCat).FirstOrDefault().tenGiai;
+                //this.Title = "Giải đấu :))  "+dbc.GiaiDaus.Where(p => p.id == idCat).FirstOrDefault().tenGiai;
                 loadDataList();
                 doPaging();
             }
